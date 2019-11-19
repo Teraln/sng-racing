@@ -7,11 +7,16 @@ import DriversAdmin from '../views/admin/DriversAdmin.vue'
 import SeriesAdmin from '../views/admin/SeriesAdmin.vue'
 import GalleryAdmin from '../views/admin/GalleryAdmin.vue'
 import PartnersAdmin from '../views/admin/PartnersAdmin.vue'
+//import { fb } from '@/firebase.js'
 
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '*',
+    redirect: '/'
+  },
   {
     path: '/',
     name: 'home',
@@ -57,12 +62,19 @@ const routes = [
   // which is lazy-loaded when the route is visited.
 ]
 
-
-
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+/*
+router.beforeEach((to, from, next) => {
+  const currentUser = fb.auth().currentUser;
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
+  if (requiresAuth && !currentUser) next('home')
+  else if (!requiresAuth && !currentUser) next('admin')
+  else next();
+})
+*/
 export default router
