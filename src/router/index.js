@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Login from '../views/admin/Login.vue'
 import Admin from '../views/admin/Admin.vue'
 import DriversAdmin from '../views/admin/DriversAdmin.vue'
 import SeriesAdmin from '../views/admin/SeriesAdmin.vue'
@@ -17,9 +18,17 @@ const routes = [
     component: Home
   },
   {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
     path: '/admin',
     name: 'admin',
     component: Admin,
+    meta: {
+      requiresAuth: true,
+    },
     children: [
       {
         path: 'drivers',
@@ -47,6 +56,8 @@ const routes = [
   // this generates a separate chunk (about.[hash].js) for this route
   // which is lazy-loaded when the route is visited.
 ]
+
+
 
 const router = new VueRouter({
   mode: 'history',
