@@ -1,7 +1,7 @@
 import firebase from "firebase"
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
+var fbConfig = {
   apiKey: "AIzaSyB-3SZJplpp4HndCcnZOkNyHbQ41XaYeMg",
   authDomain: "sng-website-6f1a3.firebaseapp.com",
   databaseURL: "https://sng-website-6f1a3.firebaseio.com",
@@ -12,5 +12,4 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 
-
-export const fb = firebase.initializeApp(firebaseConfig);
+export const fb = firebase.initializeApp(fbConfig);

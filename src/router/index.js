@@ -7,7 +7,7 @@ import DriversAdmin from '../views/admin/DriversAdmin.vue'
 import SeriesAdmin from '../views/admin/SeriesAdmin.vue'
 import GalleryAdmin from '../views/admin/GalleryAdmin.vue'
 import PartnersAdmin from '../views/admin/PartnersAdmin.vue'
-//import { fb } from '@/firebase.js'
+import { fb } from '@/firebase.js'
 
 
 Vue.use(VueRouter)
@@ -38,22 +38,34 @@ const routes = [
       {
         path: 'drivers',
         name: 'drivers-admin',
-        component: DriversAdmin
+        component: DriversAdmin,
+        meta: {
+          requiresAuth: true,
+        }
       },
       {
         path: 'series',
         name: 'series-admin',
-        component: SeriesAdmin
+        component: SeriesAdmin,
+        meta: {
+          requiresAuth: true,
+        }
       },
       {
         path: 'gallery',
         name: 'gallery-admin',
-        component: GalleryAdmin
+        component: GalleryAdmin,
+        meta: {
+          requiresAuth: true,
+        }
       },
       {
         path: 'partners',
         name: 'partners-admin',
-        component: PartnersAdmin
+        component: PartnersAdmin,
+        meta: {
+          requiresAuth: true,
+        }
       }
     ]
   }
@@ -67,14 +79,25 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-/*
-router.beforeEach((to, from, next) => {
-  const currentUser = fb.auth().currentUser;
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-  if (requiresAuth && !currentUser) next('home')
-  else if (!requiresAuth && !currentUser) next('admin')
-  else next();
+
+router.beforeEach((to, from, next) => {
+
+  const currentUser = fb.auth().currentUser
+  //If requires auth
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!currentUser) {
+      next({
+        path: '/login',
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
 })
-*/
+
 export default router

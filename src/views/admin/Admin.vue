@@ -1,6 +1,7 @@
 <template>
   <div class="admin">
     <v-app id="inspire">
+      <!-- NAV DRAWER -->
       <v-navigation-drawer v-model="drawer" app clipped>
         <v-list dense>
           <router-link to="/admin/drivers">
@@ -46,10 +47,10 @@
               </v-list-item-content>
             </v-list-item>
           </router-link>
-
         </v-list>
       </v-navigation-drawer>
 
+      <!--TOP BAR-->
       <v-app-bar app clipped-left height="40">
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
         <v-toolbar-title>SNG Admin Panel</v-toolbar-title>
@@ -58,6 +59,24 @@
       <v-content>
         <router-view />
       </v-content>
+
+      <!--BOTTOM NAV-->
+      <v-bottom-navigation :value="activeBtn" color="deep-purple accent-4">
+        <v-btn>
+          <span>Recents</span>
+          <v-icon>mdi-history</v-icon>
+        </v-btn>
+
+        <v-btn>
+          <span>Favorites</span>
+          <v-icon>mdi-heart</v-icon>
+        </v-btn>
+
+        <v-btn>
+          <span>Nearby</span>
+          <v-icon>mdi-map-marker</v-icon>
+        </v-btn>
+      </v-bottom-navigation>
     </v-app>
   </div>
 </template>
