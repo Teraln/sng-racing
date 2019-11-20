@@ -24,6 +24,7 @@
 </template>
 <script>
 import { fb } from "@/firebase.js";
+import Getter from "@/store/getter.js";
 
 export default {
   name: "Login",
@@ -49,7 +50,8 @@ export default {
     },
     // TEST
     test: function() {
-      console.log(fb.auth().currentUser);
+      // console.log(fb.auth().currentUser);
+      Getter.getDrivers();
     },
     signOut: function() {
       fb.auth()

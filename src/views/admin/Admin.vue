@@ -61,7 +61,7 @@
       </v-content>
 
       <!--BOTTOM NAV-->
-      <v-bottom-navigation :value="activeBtn" color="deep-purple accent-4">
+      <!-- <v-bottom-navigation :value="activeBtn" color="deep-purple accent-4">
         <v-btn>
           <span>Recents</span>
           <v-icon>mdi-history</v-icon>
@@ -76,7 +76,7 @@
           <span>Nearby</span>
           <v-icon>mdi-map-marker</v-icon>
         </v-btn>
-      </v-bottom-navigation>
+      </v-bottom-navigation> -->
     </v-app>
   </div>
 </template>
