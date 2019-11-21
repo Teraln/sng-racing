@@ -50,6 +50,7 @@ export default {
     },
     // TEST
     test: function() {
+      //TODO delet dis
       // console.log(fb.auth().currentUser);
       Getter.getDrivers();
     },
