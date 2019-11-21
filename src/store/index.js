@@ -15,6 +15,7 @@ export default new Vuex.Store({
     fetchDrivers() {
       const response = Getter.getDrivers()
       this.commit('setDrivers', response)
+      //TODO delet
       console.log(response)
     }
   },
