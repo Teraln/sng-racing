@@ -8,7 +8,7 @@
 
             <v-spacer></v-spacer>
 
-            <DriversModalNew :getDrivers="getDrivers"/>
+            <DriversModalNew :getDrivers="getDrivers" />
           </v-row>
 
           <v-banner
@@ -19,8 +19,8 @@
           >
             {{ `${driver.name} ${driver.lastname}` }}
             <template v-slot:actions>
-              <DriversModalEdit :driver="driver" :getDrivers="getDrivers"/>
-              <v-btn text outlined color="accent">delete</v-btn>
+              <DriversModalEdit :driver="driver" :getDrivers="getDrivers" />
+              <v-btn text outlined color="accent" @click="deleteDriver(driver.id)">delete</v-btn>
             </template>
           </v-banner>
         </v-col>
@@ -48,12 +48,17 @@ export default {
   computed: {},
   methods: {
     getDrivers() {
-      this.allDrivers = API.getData('drivers');
+      this.allDrivers = API.getData("drivers");
+    },
+    deleteDriver(id) {
+      if (window.confirm("Do you really want to delete this entry?")) {
+        API.deleteEntry("drivers", id);
+        this.getDrivers();
+      }
     }
   },
   created() {
     this.getDrivers();
   }
-
 };
 </script>

@@ -64,13 +64,7 @@ export default {
     return {
       dialog: false,
 
-      localData: {
-        name: this.driver.name,
-        lastname: this.driver.lastname,
-        country: this.driver.country,
-        role: this.driver.role,
-        id: this.driver.id
-      }
+      localData: API.driverTemplate()
     };
   },
   methods: {

@@ -47,6 +47,14 @@ class API {
             console.log("New document successfully written! =>", docRef.id);
         }).catch(err => console.log(err));
     }
+
+    deleteEntry(collection, id){
+        db.collection(collection).doc(id).delete().then(() => {
+            console.log("Document successfully deleted!", id);
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+    }
 }
 
 export default new API()
