@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import DriversModalEdit from "@/components/admin/DriversModalEdit.vue";
-import DriversModalNew from "@/components/admin/DriversModalNew.vue";
+import DriversModalEdit from "@/components/admin/edit/DriversModalEdit.vue";
+import DriversModalNew from "@/components/admin/new/DriversModalNew.vue";
 import API from "@/store/API.js";
 
 export default {
