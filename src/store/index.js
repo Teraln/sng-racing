@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Getter from './getter'
+import API from './API'
 
 Vue.use(Vuex)
 
@@ -10,10 +10,10 @@ export default new Vuex.Store({
   },
   actions: {
     fetchDrivers() {
-      const response = Getter.getDrivers()
+      const response = API.getData('drivers')
       this.commit('setDrivers', response)
       //TODO delet
-      console.log(response)
+      //console.log(response)
     }
   },
   getters: {

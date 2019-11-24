@@ -12,7 +12,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="First name" required></v-text-field>
+                <v-text-field label="First name" v-model="localData.name" required></v-text-field>
               </v-col>
               <!-- <v-col cols="12" sm="6" md="4"> -->
               <!-- <v-text-field label="Nickname"></v-text-field> -->
@@ -20,13 +20,13 @@
               <!-- hint="example of persistent helper text" persistent-hint-->
               <!-- </v-col> -->
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Last name" required></v-text-field>
+                <v-text-field label="Last name" v-model="localData.lastname" required></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Country" required></v-text-field>
+                <v-text-field label="Country" v-model="localData.country" required></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Role" required></v-text-field>
+                <v-text-field label="Role" v-model="localData.role" required></v-text-field>
               </v-col>
               <!-- <v-col cols="12" sm="6">
                 <v-text-field label="Year Joined" :value="driver.year-joined" required></v-text-field>
@@ -46,7 +46,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+          <v-btn color="blue darken-1" text @click="saveEdits()">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -55,32 +55,41 @@
 
 <script>
 //import { mapActions, mapMutations } from "vuex";
+import API from "@/store/API.js";
 
 export default {
-  name: "AdminModal",
-  props: ["driver"],
+  name: "DriversModalEdit",
+  props: ["driver", "getDrivers"],
   data() {
     return {
-      dialog: false
+      dialog: false,
 
-      // months: [
-      //   "January",
-      //   "February",
-      //   "March",
-      //   "April",
-      //   "May",
-      //   "June",
-      //   "July",
-      //   "August",
-      //   "September",
-      //   "October",
-      //   "November",
-      //   "December"
-      // ]
+      localData: {
+        name: this.driver.name,
+        lastname: this.driver.lastname,
+        country: this.driver.country,
+        role: this.driver.role,
+        id: this.driver.id
+      }
     };
   },
   methods: {
     //...mapActions(),
+    saveEdits() {
+      API.edit("drivers", this.localData, this.localData.id);
+      this.dialog = false;
+      this.getDrivers()
+    },
+    assignDefaultValues() {
+      this.localData.name = this.driver.name;
+      this.localData.lastname = this.driver.lastname;
+      this.localData.country = this.driver.country;
+      this.localData.role = this.driver.role;
+      this.localData.id = this.driver.id;
+    }
+  },
+  created() {
+    this.assignDefaultValues();
   }
 };
 </script>

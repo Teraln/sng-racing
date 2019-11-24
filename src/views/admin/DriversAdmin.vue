@@ -8,18 +8,18 @@
 
             <v-spacer></v-spacer>
 
-            <DriversModalNew />
+            <DriversModalNew :getDrivers="getDrivers"/>
           </v-row>
-          
+
           <v-banner
             class="text-capitalize"
             v-for="driver in allDrivers"
-            :key="driver.name + driver.lastname"
+            :key="allDrivers.indexOf(driver)"
             single-line
           >
             {{ `${driver.name} ${driver.lastname}` }}
             <template v-slot:actions>
-              <DriversModal :driver="driver" />
+              <DriversModalEdit :driver="driver" :getDrivers="getDrivers"/>
               <v-btn text outlined color="accent">delete</v-btn>
             </template>
           </v-banner>
@@ -30,14 +30,14 @@
 </template>
 
 <script>
-import DriversModal from "@/components/admin/DriversModal.vue";
+import DriversModalEdit from "@/components/admin/DriversModalEdit.vue";
 import DriversModalNew from "@/components/admin/DriversModalNew.vue";
-import Getter from "@/store/getter.js";
+import API from "@/store/API.js";
 
 export default {
   name: "DriversAdmin",
   components: {
-    DriversModal,
+    DriversModalEdit,
     DriversModalNew
   },
   data() {
@@ -48,11 +48,12 @@ export default {
   computed: {},
   methods: {
     getDrivers() {
-      this.allDrivers = Getter.getDrivers();
+      this.allDrivers = API.getData('drivers');
     }
   },
   created() {
     this.getDrivers();
   }
+
 };
 </script>

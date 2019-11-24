@@ -57,19 +57,21 @@
 
 <script>
 //import { mapActions, mapMutations } from "vuex";
-import Poster from "@/store/poster.js";
+import API from "@/store/API.js";
 
 export default {
   name: "DriversModalNew",
+  props: ["getDrivers"],
   data() {
     return {
       dialog: false,
 
       driverData: {
-        name: "",
-        lastname: "",
-        country: "",
-        role: ""
+        name: null,
+        lastname: null,
+        country: null,
+        role: null,
+        id: null
       }
 
       // months: [
@@ -89,14 +91,10 @@ export default {
     };
   },
   methods: {
-    resetComponent() {
-      Object.assign(this.$data, this.$options.data());
-      this.dialog = false;
-    },
     setNewDriver() {
-      Poster.postNew("drivers", this.driverData);
+      API.postNew("drivers", this.driverData);
       this.dialog = false;
-      this.resetComponent();
+      this.getDrivers();
       //TODO Refresh the list after adding
     }
   }
