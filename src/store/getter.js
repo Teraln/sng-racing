@@ -7,9 +7,15 @@ class Getter {
         db.collection("drivers").get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
+                    console.log(doc.id)
 
                     //console.log(doc.id, " => ", doc.data())
                     fbData.push(doc.data())
+                    fbData.forEach((document) => {
+                        document.id = doc.id
+                    })
+
+
                 });
             }
             );

@@ -8,10 +8,6 @@ export default new Vuex.Store({
   state: {
     drivers: []
   },
-  getters: {
-    allDrivers: state => state.drivers,
-    specificDriver: (state, name) => state.drivers[name]
-  },
   actions: {
     fetchDrivers() {
       const response = Getter.getDrivers()
@@ -19,6 +15,10 @@ export default new Vuex.Store({
       //TODO delet
       console.log(response)
     }
+  },
+  getters: {
+    allDrivers: state => state.drivers,
+    specificDriver: (state, name) => state.drivers[name]
   },
   mutations: {
     setDrivers: (state, payload) => {

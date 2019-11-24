@@ -7,10 +7,10 @@
             <H1>Drivers</H1>
 
             <v-spacer></v-spacer>
-            <v-btn fab dark color="primary">
-              <v-icon>mdi-account-plus</v-icon>
-            </v-btn>
+
+            <DriversModalNew />
           </v-row>
+          
           <v-banner
             class="text-capitalize"
             v-for="driver in allDrivers"
@@ -31,18 +31,28 @@
 
 <script>
 import DriversModal from "@/components/admin/DriversModal.vue";
-import { mapGetters } from "vuex";
+import DriversModalNew from "@/components/admin/DriversModalNew.vue";
+import Getter from "@/store/getter.js";
 
 export default {
   name: "DriversAdmin",
   components: {
-    DriversModal
+    DriversModal,
+    DriversModalNew
   },
   data() {
-    return {};
+    return {
+      allDrivers: null
+    };
   },
-  computed: {
-    ...mapGetters(["allDrivers"])
+  computed: {},
+  methods: {
+    getDrivers() {
+      this.allDrivers = Getter.getDrivers();
+    }
+  },
+  created() {
+    this.getDrivers();
   }
 };
 </script>
