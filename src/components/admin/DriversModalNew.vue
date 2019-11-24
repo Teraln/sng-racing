@@ -66,13 +66,7 @@ export default {
     return {
       dialog: false,
 
-      driverData: {
-        name: null,
-        lastname: null,
-        country: null,
-        role: null,
-        id: null
-      }
+      driverData: API.driverTemplate()
 
       // months: [
       //   "January",

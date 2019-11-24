@@ -2,17 +2,27 @@ import { db } from '../firebase.js'
 //import store from './index.js';
 
 class API {
-
+    //DATA TEMPLATES
+    driverTemplate() {
+        return {
+            name: null,
+            lastname: null,
+            country: null,
+            role: null,
+            id: null
+        }
+    }
     //READ
     getData(collection) {
         const fbData = [];
         db.collection(collection).get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-                    //TODO delet
-                    
+
+
 
                     const dataWithID = Object.assign(doc.data(), { id: doc.id })
+                    //TODO delet
                     console.log(dataWithID)
 
                     fbData.push(dataWithID)
