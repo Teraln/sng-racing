@@ -9,7 +9,8 @@ export default new Vuex.Store({
     drivers: []
   },
   getters: {
-    allDrivers: state => state.drivers
+    allDrivers: state => state.drivers,
+    specificDriver: (state, name) => state.drivers[name]
   },
   actions: {
     fetchDrivers() {

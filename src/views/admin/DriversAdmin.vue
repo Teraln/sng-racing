@@ -2,7 +2,7 @@
   <div class="DriversAdmin">
     <v-container>
       <v-row justify="center">
-        <v-col cols="4">
+        <v-col cols="8">
           <v-row class="mb-5" justify="space-between">
             <H1>Drivers</H1>
 
@@ -14,12 +14,12 @@
           <v-banner
             class="text-capitalize"
             v-for="driver in allDrivers"
-            :key="driver.name"
+            :key="driver.name + driver.lastname"
             single-line
           >
-            {{ driver.name }}
+            {{ `${driver.name} ${driver.lastname}` }}
             <template v-slot:actions>
-              <DriversModal />
+              <DriversModal :driver="driver" />
               <v-btn text outlined color="accent">delete</v-btn>
             </template>
           </v-banner>
