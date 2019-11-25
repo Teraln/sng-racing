@@ -30,17 +30,17 @@
               <v-col cols="12">
                 <v-text-field label="Role" v-model="driverData.role" required></v-text-field>
               </v-col>
-              <!-- <v-col cols="12" sm="6">
-                <v-text-field label="Year Joined" :value="driver.year-joined" required></v-text-field>
-              </v-col>-->
-              <!-- <v-col cols="12" sm="6">
-                <v-select
-                  :items="months"
-                  :value="driver.month-joined"
-                  label="Month joined"
-                  required
-                ></v-select>
-              </v-col>-->
+
+              <v-col cols="12">
+                <v-file-input
+                  label="Upload photo"
+                  filled
+                  dense
+                  prepend-icon="mdi-camera"
+                  :success="success"
+                  @change="saveImageSnapshot"
+                ></v-file-input>
+              </v-col>
             </v-row>
           </v-container>
           <small>*indicates required field</small>
@@ -48,7 +48,11 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="setNewDriver()">Save</v-btn>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="setNewDriver(); uploadImage(imageSnapshot);"
+          >Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -65,6 +69,8 @@ export default {
   data() {
     return {
       dialog: false,
+      success: false,
+      imageSnapshot: null,
 
       driverData: API.driverTemplate()
 
@@ -89,9 +95,20 @@ export default {
       API.postNew("drivers", this.driverData);
       this.dialog = false;
       this.getDrivers();
-      //TODO Refresh the list after adding
+    },
+    saveImageSnapshot(file) {
+      this.imageSnapshot = file;
+      this.success = true;
+    },
+    uploadImage(file) {
+      //TODO delet
+      console.log(file);
+      if (file !== null) {
+        API.postFile("drivers", file.name, file);
+      }
     }
   },
+
   watch: {
     dialog(val) {
       if (!val) return;
