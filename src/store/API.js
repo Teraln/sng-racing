@@ -18,8 +18,6 @@ class API {
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     const dataWithID = Object.assign(doc.data(), { id: doc.id })
-                    //TODO delet
-                    console.log(dataWithID)
 
                     fbData.push(dataWithID)
                 });
@@ -63,11 +61,28 @@ class API {
         //Create a reference and specify path to the file
         const fileRef = stRef.child(`${folder}/${name}`)
 
-        fileRef.put(file).then(snapshot => {
-            console.log('Uploaded a blob file' + snapshot)
-        }).catch(err => {
-            console.log(err)
-        })
+        const uploadTask = fileRef.put(file)
+
+
+
+        // Listen for state changes, errors, and completion of the upload.
+        uploadTask.on('state_changed', // or 'state_changed'
+            (snapshot) => {
+                // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+            }, (error) => {
+                console.log(error)
+            }, () => {
+                // Upload completed successfully, now we can get the download URL
+                uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    console.log(downloadURL);
+                });
+            });
+
+
+
+
     }
 }
 
