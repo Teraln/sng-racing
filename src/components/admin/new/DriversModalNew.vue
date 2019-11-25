@@ -51,7 +51,7 @@
           <v-btn
             color="blue darken-1"
             text
-            @click="setNewDriver(); uploadImage(imageSnapshot);"
+            @click="uploadImage(imageSnapshot);"
           >Save</v-btn>
         </v-card-actions>
       </v-card>
@@ -91,7 +91,8 @@ export default {
     };
   },
   methods: {
-    setNewDriver() {
+    setNewDriver(link) {
+      this.driverData.imageURL = link;
       API.postNew("drivers", this.driverData);
       this.dialog = false;
       this.getDrivers();
@@ -103,8 +104,10 @@ export default {
     uploadImage(file) {
       //TODO delet
       console.log(file);
-      if (file !== null) {
-        API.postFile("drivers", file.name, file);
+      if (file === null) {
+        this.setNewDriver()
+        } else {
+        API.postFile("drivers", file.name, file, this.setNewDriver);
       }
     }
   },

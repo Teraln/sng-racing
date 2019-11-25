@@ -55,7 +55,11 @@ class API {
     //READ
 
     //WRITE
-    postFile(folder, name, file) {
+
+    // IMPORTANT: The postFile function takes in a callback of either
+    // postNew() or edit() => those wait until the file is uploaded
+    // and a link is returned.
+    postFile(folder, name, file, updateDB) {
         //Create a reference to the storage
         const stRef = st.ref();
         //Create a reference and specify path to the file
@@ -66,6 +70,8 @@ class API {
 
 
         // Listen for state changes, errors, and completion of the upload.
+
+
         uploadTask.on('state_changed', // or 'state_changed'
             (snapshot) => {
                 // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
@@ -77,6 +83,7 @@ class API {
                 // Upload completed successfully, now we can get the download URL
                 uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
                     console.log(downloadURL);
+                    updateDB(downloadURL)
                 });
             });
 
