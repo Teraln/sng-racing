@@ -14,7 +14,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="First name" v-model="driverData.name" required></v-text-field>
+                <v-text-field label="First name" v-model="driverData.name" ref="focus" required></v-text-field>
               </v-col>
               <!-- <v-col cols="12" sm="6" md="4"> -->
               <!-- <v-text-field label="Nickname"></v-text-field> -->
@@ -90,6 +90,14 @@ export default {
       this.dialog = false;
       this.getDrivers();
       //TODO Refresh the list after adding
+    }
+  },
+  watch: {
+    dialog(val) {
+      if (!val) return;
+      requestAnimationFrame(() => {
+        this.$refs.focus.focus();
+      });
     }
   }
 };

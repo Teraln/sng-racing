@@ -12,7 +12,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="First name" v-model="localData.name" required></v-text-field>
+                <v-text-field label="First name" v-model="localData.name" ref="focus" required></v-text-field>
               </v-col>
               <!-- <v-col cols="12" sm="6" md="4"> -->
               <!-- <v-text-field label="Nickname"></v-text-field> -->
@@ -22,23 +22,22 @@
               <v-col cols="12" sm="6" md="4">
                 <v-text-field label="Last name" v-model="localData.lastname" required></v-text-field>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="6">
                 <v-text-field label="Country" v-model="localData.country" required></v-text-field>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="6">
                 <v-text-field label="Role" v-model="localData.role" required></v-text-field>
               </v-col>
-              <!-- <v-col cols="12" sm="6">
-                <v-text-field label="Year Joined" :value="driver.year-joined" required></v-text-field>
-              </v-col>-->
-              <!-- <v-col cols="12" sm="6">
-                <v-select
-                  :items="months"
-                  :value="driver.month-joined"
-                  label="Month joined"
-                  required
-                ></v-select>
-              </v-col>-->
+              <!--Driver photo upload-->
+              <v-col cols="12">
+                <v-file-input
+                  label="Upload photo"
+                  filled
+                  dense
+                  prepend-icon="mdi-camera"
+                  @change="uploadImage(e)"
+                ></v-file-input>
+              </v-col>
             </v-row>
           </v-container>
           <small>*indicates required field</small>
@@ -72,7 +71,10 @@ export default {
     saveEdits() {
       API.edit("drivers", this.localData, this.localData.id);
       this.dialog = false;
-      this.getDrivers()
+      this.getDrivers();
+    },
+    uploadImage(e) {
+      console.log(e.target.value);
     },
     assignDefaultValues() {
       this.localData.name = this.driver.name;
@@ -82,6 +84,15 @@ export default {
       this.localData.id = this.driver.id;
     }
   },
+  watch: {
+    dialog(val) {
+      if (!val) return;
+      requestAnimationFrame(() => {
+        this.$refs.focus.focus();
+      });
+    }
+  },
+
   created() {
     this.assignDefaultValues();
   }

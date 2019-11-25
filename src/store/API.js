@@ -8,8 +8,7 @@ class API {
             name: null,
             lastname: null,
             country: null,
-            role: null,
-            id: null
+            role: null
         }
     }
     //READ
@@ -18,16 +17,11 @@ class API {
         db.collection(collection).get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-
-
-
                     const dataWithID = Object.assign(doc.data(), { id: doc.id })
                     //TODO delet
                     console.log(dataWithID)
 
                     fbData.push(dataWithID)
-
-
                 });
             }
             );
@@ -43,12 +37,15 @@ class API {
     }
 
     postNew(collection, docData) {
-        db.collection(collection).add(docData).then((docRef) => {
-            console.log("New document successfully written! =>", docRef.id);
-        }).catch(err => console.log(err));
+
+        db.collection(collection).add(docData)
+            .then((docRef) => {
+                console.log("New document successfully written! =>", docRef.id);
+            })
+            .catch(err => console.log(err));
     }
 
-    deleteEntry(collection, id){
+    deleteEntry(collection, id) {
         db.collection(collection).doc(id).delete().then(() => {
             console.log("Document successfully deleted!", id);
         }).catch((error) => {
