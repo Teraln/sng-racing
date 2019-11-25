@@ -35,7 +35,8 @@
                   filled
                   dense
                   prepend-icon="mdi-camera"
-                  @change="uploadImage(e)"
+                  :success="success"
+                  @change="saveImageSnapshot"
                 ></v-file-input>
               </v-col>
             </v-row>
@@ -45,7 +46,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="saveEdits()">Save</v-btn>
+          <v-btn color="blue darken-1" text @click="saveEdits(); uploadImage(imageSnapshot);">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -62,6 +63,8 @@ export default {
   data() {
     return {
       dialog: false,
+      success: false,
+      imageSnapshot: null,
 
       localData: API.driverTemplate()
     };
@@ -73,8 +76,16 @@ export default {
       this.dialog = false;
       this.getDrivers();
     },
-    uploadImage(e) {
-      console.log(e.target.value);
+    saveImageSnapshot(file) {
+      this.imageSnapshot = file;
+      this.success = true;
+    },
+    uploadImage(file) {
+      //TODO delet
+      console.log(file);
+      if (file !== null) {
+        API.postFile("drivers", file.name, file);
+      }
     },
     assignDefaultValues() {
       this.localData.name = this.driver.name;

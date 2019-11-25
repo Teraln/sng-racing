@@ -1,4 +1,4 @@
-import { db } from '../firebase.js'
+import { db, st } from '../firebase.js'
 //import store from './index.js';
 
 class API {
@@ -51,6 +51,23 @@ class API {
         }).catch((error) => {
             console.error("Error removing document: ", error);
         });
+    }
+
+    //STORAGE
+    //READ
+
+    //WRITE
+    postFile(folder, name, file) {
+        //Create a reference to the storage
+        const stRef = st.ref();
+        //Create a reference and specify path to the file
+        const fileRef = stRef.child(`${folder}/${name}`)
+
+        fileRef.put(file).then(snapshot => {
+            console.log('Uploaded a blob file' + snapshot)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 }
 
