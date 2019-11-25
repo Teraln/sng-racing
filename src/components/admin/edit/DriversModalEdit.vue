@@ -29,7 +29,7 @@
                 <v-text-field label="Role" v-model="localData.role" required></v-text-field>
               </v-col>
               <!--Driver photo upload-->
-              <v-col cols="12">
+              <v-col cols="10">
                 <v-file-input
                   label="Upload photo"
                   filled
@@ -39,6 +39,11 @@
                   @change="saveImageSnapshot"
                 ></v-file-input>
               </v-col>
+              <v-col cols="2" justify="center" align="center">
+                <v-avatar>
+                  <img :src="driver.imageURL" :alt="`${driver.name} ${driver.lastname}`" />
+                </v-avatar>
+              </v-col>
             </v-row>
           </v-container>
           <small>*indicates required field</small>
@@ -46,7 +51,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="saveEdits(); uploadImage(imageSnapshot);">Save</v-btn>
+          <v-btn color="blue darken-1" text @click="uploadImage(imageSnapshot);">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -70,11 +75,12 @@ export default {
     };
   },
   methods: {
-    //...mapActions(),
-    saveEdits() {
-      API.edit("drivers", this.localData, this.localData.id);
-      this.dialog = false;
-      this.getDrivers();
+    assignDefaultValues() {
+      this.localData.name = this.driver.name;
+      this.localData.lastname = this.driver.lastname;
+      this.localData.country = this.driver.country;
+      this.localData.role = this.driver.role;
+      this.localData.id = this.driver.id;
     },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;
@@ -83,16 +89,21 @@ export default {
     uploadImage(file) {
       //TODO delet
       console.log(file);
-      if (file !== null) {
-        API.postFile("drivers", file.name, file);
+      if (!file) {
+        this.saveEdits();
+      } else {
+        API.postFile("drivers", file.name, file, this.saveEdits);
       }
     },
-    assignDefaultValues() {
-      this.localData.name = this.driver.name;
-      this.localData.lastname = this.driver.lastname;
-      this.localData.country = this.driver.country;
-      this.localData.role = this.driver.role;
-      this.localData.id = this.driver.id;
+    saveEdits(link) {
+      if (!link) {
+        API.edit("drivers", this.localData, this.localData.id);
+      } else {
+        this.localData.imageURL = link;
+        API.edit("drivers", this.localData, this.localData.id);
+      }
+      this.dialog = false;
+      this.getDrivers();
     }
   },
   watch: {

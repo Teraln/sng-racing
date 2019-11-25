@@ -14,7 +14,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="First name" v-model="driverData.name" ref="focus" required></v-text-field>
+                <v-text-field label="First name" v-model="localData.name" ref="focus" required></v-text-field>
               </v-col>
               <!-- <v-col cols="12" sm="6" md="4"> -->
               <!-- <v-text-field label="Nickname"></v-text-field> -->
@@ -22,16 +22,16 @@
               <!-- hint="example of persistent helper text" persistent-hint-->
               <!-- </v-col> -->
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Last name" v-model="driverData.lastname" required></v-text-field>
+                <v-text-field label="Last name" v-model="localData.lastname" required></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Country" v-model="driverData.country" required></v-text-field>
+                <v-text-field label="Country" v-model="localData.country" required></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-text-field label="Role" v-model="driverData.role" required></v-text-field>
+                <v-text-field label="Role" v-model="localData.role" required></v-text-field>
               </v-col>
 
-              <v-col cols="12">
+              <v-col cols="8">
                 <v-file-input
                   label="Upload photo"
                   filled
@@ -48,11 +48,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="uploadImage(imageSnapshot);"
-          >Save</v-btn>
+          <v-btn color="blue darken-1" text @click="uploadImage(imageSnapshot);">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -72,31 +68,10 @@ export default {
       success: false,
       imageSnapshot: null,
 
-      driverData: API.driverTemplate()
-
-      // months: [
-      //   "January",
-      //   "February",
-      //   "March",
-      //   "April",
-      //   "May",
-      //   "June",
-      //   "July",
-      //   "August",
-      //   "September",
-      //   "October",
-      //   "November",
-      //   "December"
-      // ]
+      localData: API.driverTemplate()
     };
   },
   methods: {
-    setNewDriver(link) {
-      this.driverData.imageURL = link;
-      API.postNew("drivers", this.driverData);
-      this.dialog = false;
-      this.getDrivers();
-    },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;
       this.success = true;
@@ -105,10 +80,20 @@ export default {
       //TODO delet
       console.log(file);
       if (file === null) {
-        this.setNewDriver()
-        } else {
+        this.setNewDriver();
+      } else {
         API.postFile("drivers", file.name, file, this.setNewDriver);
       }
+    },
+    setNewDriver(link) {
+      if (!link) {
+        API.postNew("drivers", this.localData);
+      } else {
+        this.localData.imageURL = link;
+        API.postNew("drivers", this.localData);
+      }
+      this.dialog = false;
+      this.getDrivers();
     }
   },
 
