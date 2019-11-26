@@ -44,7 +44,7 @@
               </v-col>
               <v-col cols="2" justify="center" align="center">
                 <v-avatar>
-                  <img :src="driver.imageURL" :alt="`${driver.name} ${driver.lastname}`" />
+                  <img :src="driver.imageURL" alt="No image" />
                 </v-avatar>
               </v-col>
             </v-row>
@@ -93,11 +93,11 @@ export default {
     uploadImage(file) {
       //TODO delet
       console.log(file);
+      this.dialog = false;
+
       if (!file) {
-        this.dialog = false;
         this.saveEdits();
       } else {
-        this.dialog = false;
         API.postFile("drivers", file.name, file, this.saveEdits);
       }
     },

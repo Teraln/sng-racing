@@ -37,6 +37,7 @@
               <v-col cols="8">
                 <v-file-input
                   label="Upload photo"
+                  ref="fileUpload"
                   filled
                   dense
                   prepend-icon="mdi-camera"
@@ -82,11 +83,10 @@ export default {
     uploadImage(file) {
       //TODO delet
       console.log(file);
+      this.dialog = false;
       if (file === null) {
-        this.dialog = false;
         this.setNewDriver();
       } else {
-        this.dialog = false;
         API.postFile("drivers", file.name, file, this.setNewDriver);
       }
     },
@@ -97,8 +97,14 @@ export default {
         this.localData.imageURL = link;
         API.postNew("drivers", this.localData);
       }
-
+      this.resetForm();
       this.getDrivers();
+    },
+    resetForm() {
+      this.localData = API.driverTemplate();
+      this.imageSnapshot = null;
+      this.success = false;
+      this.$refs.fileUpload.value = null
     }
   },
 
