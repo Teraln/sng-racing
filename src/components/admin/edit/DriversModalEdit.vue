@@ -28,9 +28,38 @@
               <v-col cols="6">
                 <v-text-field label="Role" v-model="localData.role" required></v-text-field>
               </v-col>
-              <v-col cols="6">
+              <v-col cols="12">
                 <v-text-field label="Series" v-model="localData.series" required></v-text-field>
               </v-col>
+
+              <v-col cols="12" class="pb-0">
+                <small>Birth date</small>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field
+                  label="DD"
+                  type="number"
+                  v-model.number="localData.bDay"
+                  maxlength="2"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field
+                  label="MM"
+                  type="number"
+                  v-model.number="localData.bMonth"
+                  maxlength="2"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field
+                  label="YYYY"
+                  type="number"
+                  v-model.number="localData.bYear"
+                  maxlength="4"
+                ></v-text-field>
+              </v-col>
+
               <!--Driver photo upload-->
               <v-col cols="10">
                 <v-file-input
@@ -70,26 +99,32 @@ export default {
   props: ["driver", "getDrivers"],
   data() {
     return {
+      localData: API.driverTemplate(),
+
       dialog: false,
       success: false,
-      imageSnapshot: null,
-
-      localData: API.driverTemplate()
+      imageSnapshot: null
     };
   },
   methods: {
     assignDefaultValues() {
-      this.localData.name = this.driver.name;
-      this.localData.lastname = this.driver.lastname;
-      this.localData.country = this.driver.country;
-      this.localData.role = this.driver.role;
-      this.localData.id = this.driver.id;
-      this.localData.series = this.driver.series;
+      const ld = this.localData;
+      const d = this.driver;
+      ld.name = d.name;
+      ld.lastname = d.lastname;
+      ld.country = d.country;
+      ld.role = d.role;
+      ld.id = d.id;
+      ld.series = d.series;
+      ld.bYear = d.bYear;
+      ld.bMonth = d.bMonth;
+      ld.bDay = d.bDay;
     },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;
       this.success = true;
     },
+
     uploadImage(file) {
       //TODO delet
       console.log(file);

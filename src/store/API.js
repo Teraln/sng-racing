@@ -9,7 +9,10 @@ class API {
             lastname: null,
             country: null,
             role: null,
-            series: null
+            series: null,
+            bYear: null,
+            bMonth: null,
+            bDay: null
         }
     }
     //READ
@@ -91,6 +94,16 @@ class API {
 
 
 
+    }
+
+    //TODO Maybe keep for later
+    //DATE HANDLER
+    dateToUnix(year, month, day) {
+        const stringify = `${year}-${month}-${day}`
+        console.log(stringify)
+        const unix = parseInt((new Date(stringify).getTime() / 1000).toFixed(0))
+        console.log(unix)
+        return unix
     }
 }
 
