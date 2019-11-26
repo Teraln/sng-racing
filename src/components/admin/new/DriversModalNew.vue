@@ -16,22 +16,45 @@
               <v-col cols="12" sm="6" md="4">
                 <v-text-field label="First name" v-model="localData.name" ref="focus" required></v-text-field>
               </v-col>
-              <!-- <v-col cols="12" sm="6" md="4"> -->
-              <!-- <v-text-field label="Nickname"></v-text-field> -->
-              <!-- hint="example of helper text only on focus" -->
-              <!-- hint="example of persistent helper text" persistent-hint-->
-              <!-- </v-col> -->
               <v-col cols="12" md="6" sm="6">
                 <v-text-field label="Last name" v-model="localData.lastname" required></v-text-field>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="6">
                 <v-text-field label="Country" v-model="localData.country" required></v-text-field>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="6">
                 <v-text-field label="Role" v-model="localData.role" required></v-text-field>
               </v-col>
               <v-col cols="6">
                 <v-text-field label="Series" v-model="localData.series" required></v-text-field>
+              </v-col>
+
+              <v-col cols="12" class="pb-0">
+                <small>Birth date</small>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field
+                  label="DD"
+                  type="number"
+                  v-model.number="localData.bDay"
+                  maxlength="2"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field
+                  label="MM"
+                  type="number"
+                  v-model.number="localData.bMonth"
+                  maxlength="2"
+                ></v-text-field>
+              </v-col>
+              <v-col cols="4">
+                <v-text-field
+                  label="YYYY"
+                  type="number"
+                  v-model.number="localData.bYear"
+                  maxlength="4"
+                ></v-text-field>
               </v-col>
 
               <v-col cols="8">
@@ -47,7 +70,6 @@
               </v-col>
             </v-row>
           </v-container>
-          <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -104,7 +126,7 @@ export default {
       this.localData = API.driverTemplate();
       this.imageSnapshot = null;
       this.success = false;
-      this.$refs.fileUpload.value = null
+      this.$refs.fileUpload.reset();
     }
   },
 
