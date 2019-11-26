@@ -21,7 +21,7 @@
               <!-- hint="example of helper text only on focus" -->
               <!-- hint="example of persistent helper text" persistent-hint-->
               <!-- </v-col> -->
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12" md="6" sm="6">
                 <v-text-field label="Last name" v-model="localData.lastname" required></v-text-field>
               </v-col>
               <v-col cols="12">
@@ -29,6 +29,9 @@
               </v-col>
               <v-col cols="12">
                 <v-text-field label="Role" v-model="localData.role" required></v-text-field>
+              </v-col>
+              <v-col cols="6">
+                <v-text-field label="Series" v-model="localData.series" required></v-text-field>
               </v-col>
 
               <v-col cols="8">
@@ -80,8 +83,10 @@ export default {
       //TODO delet
       console.log(file);
       if (file === null) {
+        this.dialog = false;
         this.setNewDriver();
       } else {
+        this.dialog = false;
         API.postFile("drivers", file.name, file, this.setNewDriver);
       }
     },
@@ -92,7 +97,7 @@ export default {
         this.localData.imageURL = link;
         API.postNew("drivers", this.localData);
       }
-      this.dialog = false;
+
       this.getDrivers();
     }
   },

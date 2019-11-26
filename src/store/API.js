@@ -8,7 +8,8 @@ class API {
             name: null,
             lastname: null,
             country: null,
-            role: null
+            role: null,
+            series: null
         }
     }
     //READ
