@@ -10,11 +10,19 @@ class API {
             country: null,
             role: null,
             series: null,
-            bYear: null,
-            bMonth: null,
-            bDay: null
+            year: null,
+            month: null,
+            day: null
         }
     }
+
+    galleryTemplate() {
+        return {
+            title: null,
+            imageURL: null
+        }
+    }
+
     //READ
     getData(collection) {
         const fbData = [];

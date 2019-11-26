@@ -12,7 +12,7 @@
           </v-row>
 
           <v-banner
-            class="text-capitalize"
+            class="text-capitalize my-1"
             v-for="driver in allDrivers"
             :key="allDrivers.indexOf(driver)"
             single-line

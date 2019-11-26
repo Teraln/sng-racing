@@ -1,5 +1,5 @@
 <template>
-  <div class="DriversModal">
+  <div class="DriversModalEdit">
     <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on }">
         <v-btn fab dark color="primary" v-on="on">
@@ -36,7 +36,7 @@
                 <v-text-field
                   label="DD"
                   type="number"
-                  v-model.number="localData.bDay"
+                  v-model.number="localData.day"
                   maxlength="2"
                 ></v-text-field>
               </v-col>
@@ -44,7 +44,7 @@
                 <v-text-field
                   label="MM"
                   type="number"
-                  v-model.number="localData.bMonth"
+                  v-model.number="localData.month"
                   maxlength="2"
                 ></v-text-field>
               </v-col>
@@ -52,7 +52,7 @@
                 <v-text-field
                   label="YYYY"
                   type="number"
-                  v-model.number="localData.bYear"
+                  v-model.number="localData.year"
                   maxlength="4"
                 ></v-text-field>
               </v-col>

@@ -1,5 +1,5 @@
 <template>
-  <div class="DriversModal">
+  <div class="DriversModalEdit">
     <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on }">
         <v-btn color="primary" dark v-on="on">edit</v-btn>
@@ -39,7 +39,7 @@
                 <v-text-field
                   label="DD"
                   type="number"
-                  v-model.number="localData.bDay"
+                  v-model.number="localData.day"
                   maxlength="2"
                 ></v-text-field>
               </v-col>
@@ -47,7 +47,7 @@
                 <v-text-field
                   label="MM"
                   type="number"
-                  v-model.number="localData.bMonth"
+                  v-model.number="localData.month"
                   maxlength="2"
                 ></v-text-field>
               </v-col>
@@ -55,7 +55,7 @@
                 <v-text-field
                   label="YYYY"
                   type="number"
-                  v-model.number="localData.bYear"
+                  v-model.number="localData.year"
                   maxlength="4"
                 ></v-text-field>
               </v-col>
@@ -115,9 +115,9 @@ export default {
       ld.role = d.role;
       ld.id = d.id;
       ld.series = d.series;
-      ld.bYear = d.bYear;
-      ld.bMonth = d.bMonth;
-      ld.bDay = d.bDay;
+      ld.year = d.year;
+      ld.month = d.month;
+      ld.day = d.day;
     },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;
