@@ -23,6 +23,15 @@ class API {
         }
     }
 
+    partnerTemplate() {
+        return {
+            name: null,
+            text: null,
+            link: null,
+            imageURL: null
+        }
+    }
+
     //READ
     getData(collection) {
         const fbData = [];
