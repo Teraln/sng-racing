@@ -17,6 +17,9 @@
             :key="allPartners.indexOf(partner)"
             single-line
           >
+            <v-avatar class="mr-5 my-2" size="100px">
+              <img :src="partner.imageURL" alt="No image" />
+            </v-avatar>
             {{ partner.name }}
             <template v-slot:actions>
               <PartnersModalEdit :partner="partner" :getPartners="getPartners" />

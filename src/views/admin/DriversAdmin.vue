@@ -2,7 +2,7 @@
   <div class="DriversAdmin">
     <v-container>
       <v-row justify="center">
-        <v-col cols="8">
+        <v-col cols="7">
           <v-row class="mb-5" justify="space-between">
             <H1>Drivers</H1>
 
@@ -17,6 +17,9 @@
             :key="allDrivers.indexOf(driver)"
             single-line
           >
+            <v-avatar class="mr-5" size="100px">
+              <img :src="driver.imageURL" alt="No image" />
+            </v-avatar>
             {{ `${driver.name} ${driver.lastname}` }}
             <template v-slot:actions>
               <DriversModalEdit :driver="driver" :getDrivers="getDrivers" />

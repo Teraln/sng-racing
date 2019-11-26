@@ -125,8 +125,8 @@ export default {
     resetForm() {
       this.localData = API.driverTemplate();
       this.imageSnapshot = null;
-      this.success = false;
       this.$refs.fileUpload.reset();
+      this.success = false;
     }
   },
 
