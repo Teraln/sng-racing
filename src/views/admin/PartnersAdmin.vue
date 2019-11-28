@@ -2,7 +2,7 @@
   <div class="PartnersAdmin">
     <v-container>
       <v-row justify="center">
-        <v-col cols="8">
+        <v-col cols="10" md="12">
           <v-row class="mb-5" justify="space-between">
             <H1>Partners</H1>
 
@@ -10,22 +10,36 @@
 
             <PartnersModalNew :getPartners="getPartners" />
           </v-row>
+          <v-row>
+            <v-col
+              v-for="partner in allPartners"
+              :key="allPartners.indexOf(partner)"
+              cols="12"
+              md="4"
+              sm="6"
+              xs="12"
+            >
+              <v-card class="mx-auto" max-width="344">
+                <v-img :src="partner.imageURL" height="200px"></v-img>
 
-          <v-banner
-            class="text-capitalize my-1"
-            v-for="partner in allPartners"
-            :key="allPartners.indexOf(partner)"
-            single-line
-          >
-            <v-avatar class="mr-5 my-2" size="100px">
-              <img :src="partner.imageURL" alt="No image" />
-            </v-avatar>
-            {{ partner.name }}
-            <template v-slot:actions>
-              <PartnersModalEdit :partner="partner" :getPartners="getPartners" />
-              <v-btn text outlined color="accent" @click="deletePartner(partner.id)">delete</v-btn>
-            </template>
-          </v-banner>
+                <v-card-title>{{ partner.name }}</v-card-title>
+
+                <v-card-actions>
+                  <PartnersModalEdit :partner="partner" :getPartners="getPartners" />
+                  <v-btn text outlined color="accent" @click="deletePartner(partner.id)">delete</v-btn>
+
+                </v-card-actions>
+
+                <v-expand-transition>
+                  <div v-show="show">
+                    <v-divider></v-divider>
+
+                    <v-card-text>I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.</v-card-text>
+                  </div>
+                </v-expand-transition>
+              </v-card>
+            </v-col>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>

@@ -19,7 +19,7 @@
               sm="6"
               xs="12"
             >
-              <v-card class="mx-auto" max-width="344" min-width="260" outlined>
+              <v-card class="mx-auto" max-width="344" min-width="280" outlined>
                 <v-list-item three-line>
                   <v-list-item-content>
                     <div class="overline mb-4">{{ driver.role }}</div>
