@@ -36,12 +36,7 @@
                 <small>Birth date</small>
               </v-col>
               <v-col cols="4">
-                <v-text-field
-                  label="DD"
-                  type="number"
-                  v-model.number="localData.day"
-                  maxlength="2"
-                ></v-text-field>
+                <v-text-field label="DD" type="number" v-model.number="localData.day" maxlength="2"></v-text-field>
               </v-col>
               <v-col cols="4">
                 <v-text-field
@@ -118,6 +113,7 @@ export default {
       ld.year = d.year;
       ld.month = d.month;
       ld.day = d.day;
+      ld.imageURL = d.imageURL;
     },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;

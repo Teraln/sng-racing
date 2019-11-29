@@ -26,7 +26,7 @@
                 <v-card-title>{{ gallery.title }}</v-card-title>
                 <v-card-actions>
                   <GalleryModalEdit :gallery="gallery" :getGallery="getGallery" />
-                  <v-btn text outlined color="accent" @click="deleteGallery(gallery.id)">delete</v-btn>
+                  <v-btn text outlined color="accent" class="mx-1" @click="deleteGallery(gallery.id)">delete</v-btn>
                 </v-card-actions>
               </v-card>
             </v-col>
