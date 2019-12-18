@@ -1,6 +1,6 @@
 <template>
   <div class="admin">
-    <v-app id="inspire">
+    <v-app id="Admin">
       <!-- NAV DRAWER -->
       <v-navigation-drawer v-model="drawer" app clipped>
         <v-list dense>
@@ -59,24 +59,6 @@
       <v-content>
         <router-view />
       </v-content>
-
-      <!--BOTTOM NAV-->
-      <!-- <v-bottom-navigation :value="activeBtn" color="deep-purple accent-4">
-        <v-btn>
-          <span>Recents</span>
-          <v-icon>mdi-history</v-icon>
-        </v-btn>
-
-        <v-btn>
-          <span>Favorites</span>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn>
-          <span>Nearby</span>
-          <v-icon>mdi-map-marker</v-icon>
-        </v-btn>
-      </v-bottom-navigation> -->
     </v-app>
   </div>
 </template>

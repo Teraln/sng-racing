@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
+import Drivers from '../views/Drivers.vue'
+
 import Login from '../views/admin/Login.vue'
 import Admin from '../views/admin/Admin.vue'
 import DriversAdmin from '../views/admin/DriversAdmin.vue'
@@ -21,6 +24,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: Home
+  },
+  {
+    path: '/drivers',
+    name: 'drivers',
+    component: Drivers
   },
   {
     path: '/login',

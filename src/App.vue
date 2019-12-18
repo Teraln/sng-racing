@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <v-app>
+    <router-view />
+  </v-app>
 </template>
 
 <script>
@@ -10,10 +12,16 @@ export default {
   data: () => ({}),
   computed: {},
   methods: {
-    ...mapActions(['fetchDrivers'])
+    ...mapActions(["fetchDrivers"])
   },
   created() {
     this.fetchDrivers();
   }
 };
 </script>
+
+<style lang="scss">
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+</style>
