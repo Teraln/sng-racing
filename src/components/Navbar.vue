@@ -1,22 +1,24 @@
 <template>
   <div class="Navbar">
-      <v-toolbar color="secondary" height="50">
-        <v-toolbar-title>Singularity Racing</v-toolbar-title>
+    <v-container>
 
-        <v-spacer></v-spacer>
+    <v-toolbar id="toolbar" color="secondary" height="50">
+      <v-toolbar-title>Singularity Racing</v-toolbar-title>
 
-        <template v-if="$vuetify.breakpoint.smAndUp">
-          <v-toolbar-items v-for="item in menu" :key="item.title">
-            <v-btn id="link" text small :to="item.route">{{ item.title }}</v-btn>
-          </v-toolbar-items>
-        </template>
-        <template v-else></template>
-      </v-toolbar>
+      <v-spacer></v-spacer>
+
+      <template v-if="$vuetify.breakpoint.smAndUp">
+        <v-toolbar-items v-for="item in menu" :key="item.title">
+          <v-btn id="link" text small :to="item.route">{{ item.title }}</v-btn>
+        </v-toolbar-items>
+      </template>
+      <template v-else></template>
+    </v-toolbar>
+    </v-container>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "Navbar",
 
@@ -33,8 +35,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#toolbar {
+  background-color: red;
+}
 #link {
-  transition: background-color .5s;
+  transition: background-color 0.5s;
   &:hover {
     background-color: $primary;
     color: $secondary;

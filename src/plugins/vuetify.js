@@ -12,7 +12,8 @@ const vuetify = new Vuetify({
         success: '#4CAF50',
         info: '#2196F3',
         warning: '#FB8C00',
-        error: '#E40000'
+        error: '#E40000',
+        background: '#fff'
       }
     },
   }
