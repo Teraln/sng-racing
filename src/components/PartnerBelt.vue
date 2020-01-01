@@ -4,84 +4,15 @@
       <!--Swiper-->
       <v-card>
         <swiper :options="swiperOption">
-          <swiper-slide>
+          <swiper-slide v-for="i in tempArr" :key="i">
             <v-card>
               <v-img
                 class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
+                height="120px"
+                :src="`https://i.picsum.photos/id/23${i}/300/300.jpg`"
               ></v-img>
             </v-card>
           </swiper-slide>
-
-          <swiper-slide>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
-              ></v-img>
-            </v-card>
-          </swiper-slide>
-
-          <swiper-slide>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
-              ></v-img>
-            </v-card>
-          </swiper-slide>
-          <swiper-slide>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
-              ></v-img>
-            </v-card>
-          </swiper-slide>
-          <swiper-slide>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
-              ></v-img>
-            </v-card>
-          </swiper-slide>
-          <swiper-slide>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
-              ></v-img>
-            </v-card>
-          </swiper-slide>
-          <swiper-slide>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
-              ></v-img>
-            </v-card>
-          </swiper-slide>
-          <swiper-slide>
-            <v-card>
-              <v-img
-                class="white--text align-end"
-                height="200px"
-                src="http://cdn.eso.org/images/screen/eso1907a.jpg"
-              ></v-img>
-            </v-card>
-          </swiper-slide>
-
-          <div class="swiper-pagination" slot="pagination"></div>
-          <div class="swiper-button-prev" slot="button-prev"></div>
-          <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
       </v-card>
     </v-container>
@@ -100,19 +31,18 @@ export default {
   },
   data() {
     return {
+      //TODO delet
+      //TODO will have to make a script that adds elements to the array to get rid of blanks?
+      tempArr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
       swiperOption: {
-        slidesPerView: 5,
+        slidesPerView: 3,
+        slidesPerGroup: 1,
+        loopedSlides: 3,
         spaceBetween: 30,
-        slidesPerGroup: 3,
         loop: true,
-        loopFillGroupWithBlank: true,
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev"
+        loopFillGroupWithBlank: false,
+        autoplay: {
+          delay: 1000
         }
       }
     };
@@ -121,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.swiper-button-prev {
-  color: $primary;
+.swiper-container {
+  background-color: $secondary;
 }
 </style>
