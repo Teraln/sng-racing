@@ -35,9 +35,9 @@ export default {
       //TODO will have to make a script that adds elements to the array to get rid of blanks?
       tempArr: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
       swiperOption: {
-        slidesPerView: 3,
+        slidesPerView: 5,
         slidesPerGroup: 1,
-        loopedSlides: 3,
+        loopedSlides: 4,
         spaceBetween: 30,
         loop: true,
         loopFillGroupWithBlank: false,

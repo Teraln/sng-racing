@@ -5,23 +5,25 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 
 export default {
   name: "App",
   data: () => ({}),
-  computed: {},
-  methods: {
-    ...mapActions(["fetchDrivers"])
-  },
-  created() {
-    this.fetchDrivers();
-  }
 };
 </script>
 
 <style lang="scss">
-body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+html {
+
+  /*TODO Will adjust this to scale to other screens*/
+  font-size: 18px !important;
+}
+@font-face {
+  font-family: 'ubuntu';
+  src: url('./assets/fonts/Ubuntu-Medium.ttf') format('truetype'),
+  
+}
+#main {
+  font-family: 'ubuntu', Arial;
 }
 </style>
