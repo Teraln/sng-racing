@@ -5,25 +5,19 @@
 </template>
 
 <script>
-
 export default {
   name: "App",
-  data: () => ({}),
+  data: () => ({})
 };
 </script>
 
 <style lang="scss">
 html {
-
   /*TODO Will adjust this to scale to other screens*/
   font-size: 16px !important;
+  font-family: "Ubuntu", sans-serif;
 }
-@font-face {
-  font-family: 'Ubuntu', sans-serif;
-  src: url('./assets/fonts/Ubuntu-Medium.ttf') format('truetype');
-  src: url('./assets/fonts/Ubuntu-Light.ttf') format('truetype');
-  
-}
+
 #main {
   font-family: $mainFont;
 }

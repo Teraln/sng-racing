@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '../views/Home.vue'
 import Drivers from '../views/Drivers.vue'
+import Partners from '../views/Partners.vue'
 
 import Login from '../views/admin/Login.vue'
 import Admin from '../views/admin/Admin.vue'
@@ -29,6 +30,11 @@ const routes = [
     path: '/drivers',
     name: 'drivers',
     component: Drivers
+  },
+  {
+    path: '/partners',
+    name: 'partners',
+    component: Partners
   },
   {
     path: '/login',

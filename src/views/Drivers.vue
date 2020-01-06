@@ -18,7 +18,7 @@
 import Navbar from "../components/Navbar";
 import TopParallax from "../components/TopParallax";
 import PartnerBelt from "../components/PartnerBelt";
-import DriverCard from "../components/drivers/DriverCard";
+import DriverCard from "../components/Elements/DriverCard";
 
 import API from '../store/API'
 

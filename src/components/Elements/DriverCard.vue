@@ -44,6 +44,7 @@
           </v-row>
         </v-col>
         <v-col class="py-2 px-4" cols="12">
+          <!-- TODO temp -->
           <v-row>
             <v-col id="property" class="py-0" cols="3">Titles:</v-col>
             <v-col
@@ -103,7 +104,7 @@ export default {
 }
 
 #right-side-container {
-  transform: skew(-2deg, 0deg);
+  transform: skew(-3deg, 0deg);
   background-color: $lightGrey;
   outline: solid 1px $primary;
   outline-offset: 0.2rem;
@@ -113,12 +114,12 @@ export default {
     color: $primary;
     text-align: end;
     font-weight: 500;
-    transform: skew(2deg, 0deg);
+    transform: skew(3deg, 0deg);
   }
   & #info {
     font-size: $fSmall;
     font-weight: 300;
-    transform: skew(2deg, 0deg);
+    transform: skew(3deg, 0deg);
   }
 }
 </style>
