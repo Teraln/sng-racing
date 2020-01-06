@@ -1,15 +1,21 @@
 /*Colors*/
 
 /*Primary - SNGreen*/
-$primary: #96CE11;
+$primary: #96ce11;
 /*Secondary - Black*/
 $secondary: #000000;
+/*Grey (Background)*/
+$grey: #232323;
+/*Lighter grey (accents)*/
+$lightGrey: #646262;
 /*Accent - White*/
-$accent: #FFFFFF;
+$accent: #ffffff;
 /*Error - Red*/
-$error: #E40000;
+$error: #e40000;
 
 /*Font Sizes*/
+/*Main font family*/
+$mainFont: "Ubuntu", sans-serif;
 /*Normal Text*/
 $fText: 1rem;
 /*Header*/

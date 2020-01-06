@@ -1,10 +1,22 @@
 <template>
   <v-container class="DriverCard">
     <v-row>
-      <v-col cols="12" md="5">
-        <v-img :src="driver.imageURL" max-height="300"></v-img>
+      <!-- LEFT SIDE -->
+      <!-- TODO Vertical on drivers page, horizontal on homepage -->
+      <v-col id="left-side-container" cols="12">
+        <!-- Image -->
+        <v-col id="driver-name-container" cols="12">
+          <h1 id="driver-name">{{ `${driver.name} ${driver.lastname}` }}</h1>
+        </v-col>
+        <!-- Name -->
+        <v-col cols="12">
+          <v-img :src="driver.imageURL" max-height="400"></v-img>
+        </v-col>
       </v-col>
-      <v-col cols="12" md="7">
+
+      <!-- RIGHT SIDE -->
+      <!-- TODO Vertical on drivers page, horizontal on homepage -->
+      <v-col id="right-side-container" cols="12">
         <v-col class="py-2 px-4" cols="12">
           <v-row>
             <v-col id="property" class="py-0" cols="3">Country:</v-col>
@@ -27,7 +39,11 @@
         <v-col class="py-2 px-4" cols="12">
           <v-row>
             <v-col id="property" class="py-0" cols="3">Country:</v-col>
-            <v-col id="info" class="py-0" cols="9">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores laborum aut quisquam quae magnam, sequi nobis doloribus obcaecati alias iusto provident consectetur amet voluptates nulla. Aut commodi saepe alias cupiditate!</v-col>
+            <v-col
+              id="info"
+              class="py-0"
+              cols="9"
+            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id exercitationem aliquid tempora maiores sunt laudantium? Quos rem officia nobis. Beatae, consequuntur. Dolore odio voluptatibus cupiditate dignissimos voluptas rerum! Placeat, accusamus.</v-col>
           </v-row>
         </v-col>
       </v-col>
@@ -63,11 +79,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#property {
-  font-size: $fText;
-  text-align: end;
+#left-side-container {
+  & #driver-name-container {
+    background-color: $primary;
+    transform: skew(15deg, 0deg);
+    z-index: 1;
+    outline: solid 1px $lightGrey;
+    outline-offset: 0.2rem;
+
+    & #driver-name {
+      text-align: center;
+      transform: skew(-15deg, -0deg);
+    }
+  }
 }
-#info {
-  font-size: $fText;
+
+#right-side-container {
+  transform: skew(-3deg, 0deg);
+  background-color: $lightGrey;
+  outline: solid 1px $primary;
+  outline-offset: 0.2rem;
+
+  & #property {
+    font-size: $fText;
+    text-align: end;
+    font-weight: 500;
+    transform: skew(3deg, 0deg);
+  }
+  & #info {
+    font-size: $fText;
+    font-weight: 300;
+    transform: skew(3deg, 0deg);
+  }
 }
 </style>

@@ -5,8 +5,8 @@
     <PartnerBelt />
     <v-container>
       <v-row justify="center">
-        <v-col v-for="n in 9" :key="n" md="6" sm="12">
-          <DriverCard />
+        <v-col v-for="driver in drivers" :key="driver.id" md="4" sm="12">
+          <DriverCard :driver="driver"/>
         </v-col>
       </v-row>
     </v-container>
@@ -20,11 +20,15 @@ import TopParallax from "../components/TopParallax";
 import PartnerBelt from "../components/PartnerBelt";
 import DriverCard from "../components/drivers/DriverCard";
 
+import API from '../store/API'
+
 export default {
   name: "Drivers",
   components: { Navbar, TopParallax, PartnerBelt, DriverCard },
   data() {
-    return {};
+    return {
+      drivers: API.getData('drivers')
+    };
   }
 };
 </script>

@@ -19,11 +19,12 @@ html {
   font-size: 18px !important;
 }
 @font-face {
-  font-family: 'ubuntu';
-  src: url('./assets/fonts/Ubuntu-Medium.ttf') format('truetype'),
+  font-family: 'Ubuntu', sans-serif;
+  src: url('./assets/fonts/Ubuntu-Medium.ttf') format('truetype');
+  src: url('./assets/fonts/Ubuntu-Light.ttf') format('truetype');
   
 }
 #main {
-  font-family: 'ubuntu', Arial;
+  font-family: $mainFont;
 }
 </style>
