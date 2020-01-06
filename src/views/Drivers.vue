@@ -5,7 +5,7 @@
     <PartnerBelt />
     <v-container>
       <v-row justify="center">
-        <v-col v-for="driver in drivers" :key="driver.id" md="4" sm="12">
+        <v-col v-for="driver in drivers" :key="driver.id" lg="4" md="6" sm="12">
           <DriverCard :driver="driver"/>
         </v-col>
       </v-row>

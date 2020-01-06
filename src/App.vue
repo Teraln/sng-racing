@@ -16,7 +16,7 @@ export default {
 html {
 
   /*TODO Will adjust this to scale to other screens*/
-  font-size: 18px !important;
+  font-size: 16px !important;
 }
 @font-face {
   font-family: 'Ubuntu', sans-serif;
