@@ -1,9 +1,9 @@
 <template>
   <v-container class="DriverCard">
-    <v-col cols="4" offset="4">
-      <v-img :src="partner.imageURL"></v-img>
+    <v-col cols="4" offset="4" class="pb-2">
+      <v-img :src="partner.imageURL" contain></v-img>
     </v-col>
-    <v-col cols="8" offset="2" class="pa-5 mt-5" id="text-div">
+    <v-col cols="8" offset="2" class="pa-5" id="text-div">
       <p min-height="200">{{ partner.text }}</p>
     </v-col>
     <v-col cols="4" offset="4" id="link-container" class="pb-5">
@@ -32,8 +32,8 @@ export default {
 }
 
 #link-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
   border-bottom: solid 1px $primary;
 
   #website-link {
