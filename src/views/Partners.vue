@@ -18,16 +18,18 @@ import Navbar from "../components/Navbar";
 import TopParallax from "../components/TopParallax";
 import PartnerCard from "../components/Elements/PartnerCard";
 
-import API from "../store/API";
-
 export default {
-  name: 'Partners',
+  name: "Partners",
+  components: { Navbar, TopParallax, PartnerCard },
   data() {
     return {
-      partners: API.getData("partners")
+      partners: []
     };
   },
-  components: { Navbar, TopParallax, PartnerCard },
+  mounted() {
+    //Get the data from Vuex
+    this.partners = this.$store.getters.partners;
+  }
 };
 </script>
 

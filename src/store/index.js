@@ -26,7 +26,6 @@ export default new Vuex.Store({
     },
     fetchPartners() {
       this.commit('setPartners', API.getData('partners'))
-      console.log('this fired')
     },
   },
   getters: {
