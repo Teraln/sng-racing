@@ -7,7 +7,11 @@
 <script>
 export default {
   name: "App",
-  data: () => ({})
+  data: () => ({}),
+  created() {
+    this.$store.dispatch("fetchDrivers");
+    this.$store.dispatch("fetchPartners");
+  }
 };
 </script>
 

@@ -16,13 +16,6 @@ class API {
         }
     }
 
-    galleryTemplate() {
-        return {
-            title: null,
-            imageURL: null
-        }
-    }
-
     partnerTemplate() {
         return {
             name: null,
@@ -31,6 +24,14 @@ class API {
             imageURL: null
         }
     }
+    
+    galleryTemplate() {
+        return {
+            title: null,
+            imageURL: null
+        }
+    }
+
 
     //READ
     getData(collection) {
@@ -43,7 +44,9 @@ class API {
                     fbData.push(dataWithID)
                 });
             }
-            );
+            ).catch(error => {
+                console.error(error)
+            });
         //console.log(fbData);
         return fbData
     }

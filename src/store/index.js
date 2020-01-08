@@ -6,23 +6,31 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    drivers: []
-  },
-  actions: {
-    fetchDrivers() {
-      const response = API.getData('drivers')
-      this.commit('setDrivers', response)
-      //TODO delet
-      //console.log(response)
-    }
-  },
-  getters: {
-    allDrivers: state => state.drivers,
-    specificDriver: (state, name) => state.drivers[name]
+    drivers: [],
+    partners: [],
+
+    //TODO Add db collections here
+
   },
   mutations: {
     setDrivers: (state, payload) => {
       state.drivers = payload
+    },
+    setPartners: (state, payload) => {
+      state.partners = payload
     }
+  },
+  actions: {
+    fetchDrivers() {
+      this.commit('setDrivers', API.getData('drivers'))
+    },
+    fetchPartners() {
+      this.commit('setPartners', API.getData('partners'))
+      console.log('this fired')
+    },
+  },
+  getters: {
+    drivers: state => state.drivers,
+    partners: state => state.partners,
   }
 })
