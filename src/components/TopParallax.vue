@@ -37,7 +37,7 @@ export default {
 #shape-bottom {
   position: absolute;
   bottom: 0;
-  background-color: $grey;
+  background-color: $secondary;
   height: 100%;
   width: 100%;
   clip-path: polygon(40% 96%, 42% 90%, 100% 100%, 0% 100%);
