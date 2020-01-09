@@ -2,7 +2,7 @@
   <div class="PartnerBelt">
     <v-container>
       <hooper :settings="hooperSettings">
-        <slide v-for="partner in partners" :key="partner.id">
+        <slide v-for="(partner,index) in partners" :key="index" :index="index">
           <img :src="partner.imageURL" :alt="partner.name" draggable="false" />
         </slide>
       </hooper>
@@ -27,7 +27,7 @@ export default {
         autoPlay: true,
         playSpeed: 2000,
         wheelControl: false,
-        transition: 600,
+        transition: 200,
         breakpoints: {
           1264: {
             itemsToShow: 3
@@ -45,21 +45,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .PartnerBelt {
   background-color: $secondary;
   & .hooper {
     outline: none;
-    overflow: hidden;
     height: 6rem;
     & .hooper-slide {
-      text-align: center;
       background-color: transparent;
-      display: flex;
-      justify-items: center;
+      display: grid;
       & img {
-        margin: auto;
+        justify-self: center;
         align-self: center;
+        display: inherit;
         height: auto;
         width: 12rem;
         pointer-events: none;
