@@ -2,7 +2,7 @@
   <div class="Navbar">
     <v-container>
       <v-toolbar id="toolbar" color="secondary" height="50">
-        <v-toolbar-title>Singularity Racing</v-toolbar-title>
+        <v-toolbar-title id="toolbar-title">Singularity Racing</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
@@ -37,6 +37,9 @@ export default {
 <style lang="scss" scoped>
 .Navbar {
   background-color: $secondary;
+  & #toolbar-title {
+    font-weight: 300;
+  }
 }
 #link {
   transition: background-color 0.4s;

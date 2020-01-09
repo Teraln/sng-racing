@@ -3,7 +3,7 @@
     <Navbar />
     <TopParallax />
     <PartnerBelt />
-    <v-container>
+    <v-container id="ads">
       <v-row justify="center">
         <v-col v-for="driver in drivers" :key="driver.id" lg="4" md="6" sm="12">
           <DriverCard :driver="driver" />
@@ -36,4 +36,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.Drivers {
+  background: rgb(35, 35, 35);
+  background: linear-gradient(
+    90deg,
+    rgba(35, 35, 35, 1) 5%,
+    rgba(83, 82, 82, 1) 50%,
+    rgba(35, 35, 35, 1) 95%
+  );
+}
 </style>
