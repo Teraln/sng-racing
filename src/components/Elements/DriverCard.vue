@@ -1,6 +1,5 @@
 <template>
   <v-container class="DriverCard">
-
     <v-row>
       <!-- LEFT SIDE -->
       <!-- TODO Vertical on drivers page, horizontal on homepage -->
@@ -87,39 +86,41 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#left-side-container {
-  & #driver-name-container {
-    background-color: $primary;
-    transform: skew(15deg, 0deg);
-    z-index: 1;
-    outline: solid 1px $lightGrey;
-    outline-offset: 0.2rem;
+.DriverCard {
+  & #left-side-container {
+    & #driver-name-container {
+      background-color: $primary;
+      transform: skew(15deg, 0deg);
+      z-index: 1;
+      outline: solid 1px $lightGrey;
+      outline-offset: 0.2rem;
 
-    & #driver-name {
-      text-align: center;
-      transform: skew(-15deg, -0deg);
-      font-size: $fHeader;
+      & #driver-name {
+        text-align: center;
+        transform: skew(-15deg, -0deg);
+        font-size: $fHeader;
+      }
     }
   }
-}
 
-#right-side-container {
-  transform: skew(-3deg, 0deg);
-  background-color: $lightGrey;
-  outline: solid 1px $primary;
-  outline-offset: 0.2rem;
+  #right-side-container {
+    transform: skew(-3deg, 0deg);
+    background-color: $lightGrey;
+    outline: solid 1px $primary;
+    outline-offset: 0.2rem;
 
-  & #property {
-    font-size: $fSmall;
-    color: $primary;
-    text-align: end;
-    font-weight: 500;
-    transform: skew(3deg, 0deg);
-  }
-  & #info {
-    font-size: $fSmall;
-    font-weight: 300;
-    transform: skew(3deg, 0deg);
+    & #property {
+      font-size: $fSmall;
+      color: $primary;
+      text-align: end;
+      font-weight: 500;
+      transform: skew(3deg, 0deg);
+    }
+    & #info {
+      font-size: $fSmall;
+      font-weight: 300;
+      transform: skew(3deg, 0deg);
+    }
   }
 }
 </style>
