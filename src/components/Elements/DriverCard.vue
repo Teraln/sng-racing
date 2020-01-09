@@ -27,7 +27,7 @@
           <v-row>
             <v-col id="property" class="py-0" cols="3">Age:</v-col>
             <!-- TODO temp -->
-            <v-col id="info" class="py-0" cols="9">{{ driver.day }}</v-col>
+            <v-col id="info" class="py-0" cols="9">{{ getAge(driver) }}</v-col>
           </v-row>
         </v-col>
         <v-col class="py-2 px-4" cols="12">
@@ -59,8 +59,6 @@
 </template>
 
 <script>
-import API from "../../store/API";
-
 export default {
   name: "DriverCard",
   props: ["driver"],
@@ -69,17 +67,10 @@ export default {
   },
   methods: {
     getAge(e) {
-      //Birthdate
-      const unixBirth = API.dateToUnix(e.year, e.month, e.day);
-      console.log(unixBirth);
+      const ageDiffMs = Date.now() - new Date(`${e.year}-${e.month}-${e.day}`);
+      const ageDate = new Date(ageDiffMs);
 
-      //Today
-      const today = new Date();
-      const unixToday = Date.parse(today);
-      console.log(unixToday);
-
-      //Age
-      // const age = unixToday - unixBirth
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
   }
 };
