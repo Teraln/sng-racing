@@ -96,8 +96,8 @@ export default {
 
   #right-side-container {
     transform: skew(-3deg, 0deg);
-    background-color: $lightGrey;
-    outline: solid 1px $primary;
+    background-color: $grey;
+    outline: solid 1px $lightGrey;
     outline-offset: 0.2rem;
 
     & #property {

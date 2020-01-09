@@ -44,7 +44,7 @@ export default {
   background: linear-gradient(
     90deg,
     rgba(35, 35, 35, 1) 5%,
-    rgba(83, 82, 82, 1) 50%,
+    rgba(59, 58, 58, 1) 50%,
     rgba(35, 35, 35, 1) 95%
   );
 }
