@@ -7,26 +7,40 @@
     <v-container class="gallery-container">
       <!-- <h1 id="gallery-title">Gallery</h1> -->
 
-      <!-- Control Buttons -->
-      <!-- <v-btn id="control-btn-next" @click="slideNext" text x-large icon color="primary">
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-      <v-btn id="control-btn-prev" @click="slidePrev" text x-large icon color="primary">
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>-->
-
       <!-- Hooper -->
-      <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
-        <!-- Slides -->
-        <slide id="gallery-slide" v-for="(item, index) in gallery" :key="index" :index="index">
-          <div id="item-title-container">
-            <h5 id="item-title">{{item.title}}</h5>
-          </div>
-          <v-img id="item-image" :src="item.imageURL" :alt="item.title" contain></v-img>
-        </slide>
-        <hooper-progress slot="hooper-addons"></hooper-progress>
-        <hooper-pagination slot="hooper-addons"></hooper-pagination>
-      </hooper>
+      <div class="hooper-container">
+        <!-- Control Buttons -->
+        <v-btn
+          id="control-btn-next"
+          @click="slideNext(); smoothScroll();"
+          text
+          icon
+          color="primary"
+        >
+          <v-icon>mdi-chevron-down</v-icon>
+        </v-btn>
+        <v-btn
+          id="control-btn-prev"
+          @click="slidePrev(); smoothScroll()"
+          text
+          icon
+          color="primary"
+        >
+          <v-icon>mdi-chevron-up</v-icon>
+        </v-btn>
+
+        <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
+          <!-- Slides -->
+          <slide id="gallery-slide" v-for="(item, index) in gallery" :key="index" :index="index">
+            <div id="item-title-container">
+              <h5 id="item-title">{{item.title}}</h5>
+            </div>
+            <v-img id="item-image" :src="item.imageURL" :alt="item.title" contain></v-img>
+          </slide>
+          <hooper-progress slot="hooper-addons"></hooper-progress>
+          <hooper-pagination slot="hooper-addons"></hooper-pagination>
+        </hooper>
+      </div>
     </v-container>
   </div>
 </template>
@@ -105,55 +119,81 @@ export default {
   );
   //Component wrapper
   & .gallery-container {
+    height: 100vh;
     //Title
     & #gallery-title {
       text-align: center;
       margin: 3rem 0 4rem 0;
       font-weight: 300;
     }
-    //The hooper component
-    & #gallery-hooper {
-      outline: none;
-      background-color: rgba($color: $lightGrey, $alpha: 0.2);
-      height: 80vh;
-      margin: 10% 0 10% 0;
-      //Image element
-      & #gallery-slide {
-        position: relative;
-        //Item title container
-        & #item-title-container {
-          position: absolute;
-          transform: skew(15deg, 0deg);
-          max-width: 70%;
-          top: 2rem;
-          left: 2rem;
-          background: rgba($color: $lightGrey, $alpha: 0.7);
-          //Item title
-          & #item-title {
-            transform: skew(-15deg, -0deg);
-            padding: 0.1rem 1rem 0.1rem 1rem;
-            color: $accent;
-            font-size: $fText;
-            font-weight: 300;
+    //Hooper Container
+    & .hooper-container {
+      height: 100%;
+      position: relative;
+      & #control-btn-prev {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        z-index: 3;
+      }
+      & #control-btn-next {
+        position: absolute;
+        bottom: 1rem;
+        right: 2rem;
+        z-index: 3;
+      }
+
+      //The hooper component
+      & #gallery-hooper {
+        outline: none;
+        border-bottom: 1px $primary solid;
+        height: 100%;
+        //Image element
+        & #gallery-slide {
+          position: relative;
+          //Item title container
+          & #item-title-container {
+            position: absolute;
+            transform: skew(15deg, 0deg);
+            max-width: 70%;
+            top: 2rem;
+            left: 2rem;
+            background: rgba($color: $lightGrey, $alpha: 0.7);
+            //Item title
+            & #item-title {
+              transform: skew(-15deg, -0deg);
+              padding: 0.1rem 1rem 0.1rem 1rem;
+              color: $accent;
+              font-size: $fText;
+              font-weight: 300;
+            }
+          }
+
+          & #item-image {
+            overflow: hidden;
+            max-width: 100%;
+            max-height: 90%;
           }
         }
-
-        & #item-image {
-          overflow: hidden;
-          max-width: 100%;
-          max-height: 90%;
+        & .hooper-progress-inner {
+          background-color: $primary;
+        }
+        & .hooper-slide {
+          display: inherit;
+          align-items: center;
+        }
+        & .hooper-indicator.is-active {
+          background-color: $primary;
         }
       }
-      & .hooper-progress-inner {
-        background-color: $primary;
-      }
-      & .hooper-slide {
-        display: inherit;
-        align-items: center;
-      }
-      & .hooper-indicator.is-active {
-        background-color: $primary;
-      }
+    }
+  }
+  & section#gallery-hooper {
+    position: relative;
+    & #control-btn-next {
+      position: absolute;
+      top: 10px;
+      right: 10px;
     }
   }
 }
