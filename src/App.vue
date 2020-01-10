@@ -9,8 +9,9 @@ export default {
   name: "App",
   data: () => ({}),
   created() {
-    this.$store.dispatch("fetchDrivers");
     this.$store.dispatch("fetchPartners");
+    this.$store.dispatch("fetchDrivers");
+    this.$store.dispatch("fetchGallery");
   }
 };
 </script>

@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     drivers: [],
     partners: [],
+    gallery: [],
 
     //TODO Add db collections here
 
@@ -18,7 +19,10 @@ export default new Vuex.Store({
     },
     setPartners: (state, payload) => {
       state.partners = payload
-    }
+    },
+    setGallery: (state, payload) => {
+      state.gallery = payload
+    },
   },
   actions: {
     fetchDrivers() {
@@ -27,9 +31,13 @@ export default new Vuex.Store({
     fetchPartners() {
       this.commit('setPartners', API.getData('partners'))
     },
+    fetchGallery() {
+      this.commit('setGallery', API.getData('gallery'))
+    },
   },
   getters: {
     drivers: state => state.drivers,
     partners: state => state.partners,
+    gallery: state => state.gallery,
   }
 })
