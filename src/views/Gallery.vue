@@ -6,6 +6,8 @@
     <PartnerBelt />
     <v-container class="gallery-container">
       <!-- <h1 id="gallery-title">Gallery</h1> -->
+
+
       <!-- Control Buttons -->
       <!-- <v-btn id="control-btn-next" @click="slideNext" text x-large icon color="primary">
         <v-icon>mdi-chevron-down</v-icon>
@@ -13,6 +15,8 @@
       <v-btn id="control-btn-prev" @click="slidePrev" text x-large icon color="primary">
         <v-icon>mdi-chevron-up</v-icon>
       </v-btn>-->
+
+      
       <!-- Hooper -->
       <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
         <!-- Slides -->
@@ -112,6 +116,7 @@ export default {
     }
     //The hooper component
     & #gallery-hooper {
+      outline: none;
       background-color: rgba($color: $lightGrey, $alpha: 0.2);
       height: 80vh;
       margin: 10% 0 10% 0;
