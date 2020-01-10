@@ -1,5 +1,5 @@
 <template>
-  <v-container class="DriverCard">
+  <v-container class="DriverCard pb-4">
     <v-row>
       <!-- LEFT SIDE -->
       <!-- TODO Vertical on drivers page, horizontal on homepage -->
@@ -10,7 +10,7 @@
         </v-col>
         <!-- Name -->
         <v-col cols="10" offset="1">
-          <v-img :src="driver.imageURL" max-height="300" class="my-4"></v-img>
+          <v-img contain :src="driver.imageURL" max-height="300" class="my-4"></v-img>
         </v-col>
       </v-col>
 
@@ -78,13 +78,14 @@ export default {
 
 <style lang="scss" scoped>
 .DriverCard {
+  background-color: rgba($color: $grey, $alpha: 0.5);
   & #left-side-container {
     & #driver-name-container {
       background-color: $primary;
       transform: skew(15deg, 0deg);
       z-index: 1;
       outline: solid 1px $lightGrey;
-      outline-offset: 0.2rem;
+      outline-offset: 0.3rem;
 
       & #driver-name {
         text-align: center;
@@ -98,7 +99,7 @@ export default {
     transform: skew(-3deg, 0deg);
     background-color: $grey;
     outline: solid 1px $lightGrey;
-    outline-offset: 0.2rem;
+    outline-offset: 0.3rem;
 
     & #property {
       font-size: $fSmall;
