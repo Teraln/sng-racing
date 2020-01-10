@@ -7,7 +7,6 @@
     <v-container class="gallery-container">
       <!-- <h1 id="gallery-title">Gallery</h1> -->
 
-
       <!-- Control Buttons -->
       <!-- <v-btn id="control-btn-next" @click="slideNext" text x-large icon color="primary">
         <v-icon>mdi-chevron-down</v-icon>
@@ -16,16 +15,14 @@
         <v-icon>mdi-chevron-up</v-icon>
       </v-btn>-->
 
-      
       <!-- Hooper -->
       <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
         <!-- Slides -->
         <slide id="gallery-slide" v-for="(item, index) in gallery" :key="index" :index="index">
-          <v-img id="item-image" :src="item.imageURL" :alt="item.title" contain>
-            <div id="item-title-container">
-              <h5 id="item-title">{{item.title}}</h5>
-            </div>
-          </v-img>
+          <div id="item-title-container">
+            <h5 id="item-title">{{item.title}}</h5>
+          </div>
+          <v-img id="item-image" :src="item.imageURL" :alt="item.title" contain></v-img>
         </slide>
         <hooper-progress slot="hooper-addons"></hooper-progress>
         <hooper-pagination slot="hooper-addons"></hooper-pagination>
@@ -121,18 +118,15 @@ export default {
       height: 80vh;
       margin: 10% 0 10% 0;
       //Image element
-      & #item-image {
-        overflow: hidden;
+      & #gallery-slide {
         position: relative;
-        max-width: 100%;
-        max-height: 90%;
         //Item title container
         & #item-title-container {
           position: absolute;
           transform: skew(15deg, 0deg);
           max-width: 70%;
-          top: 5%;
-          left: 5%;
+          top: 2rem;
+          left: 2rem;
           background: rgba($color: $lightGrey, $alpha: 0.7);
           //Item title
           & #item-title {
@@ -142,6 +136,12 @@ export default {
             font-size: $fText;
             font-weight: 300;
           }
+        }
+
+        & #item-image {
+          overflow: hidden;
+          max-width: 100%;
+          max-height: 90%;
         }
       }
       & .hooper-progress-inner {
