@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Drivers from '../views/Drivers.vue'
 import Partners from '../views/Partners.vue'
+import Gallery from '../views/Gallery.vue'
 
 import Login from '../views/admin/Login.vue'
 import Admin from '../views/admin/Admin.vue'
@@ -36,6 +37,16 @@ const routes = [
     name: 'partners',
     component: Partners
   },
+  {
+    path: '/gallery',
+    name: 'gallery',
+    component: Gallery
+  },
+
+
+
+
+  //ADMIN SECTION
   {
     path: '/login',
     name: 'login',

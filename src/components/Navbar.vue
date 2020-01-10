@@ -27,7 +27,8 @@ export default {
       menu: [
         { title: "Home", route: "/" },
         { title: "Drivers", route: "/drivers" },
-        { title: "Partners", route: "/partners" }
+        { title: "Partners", route: "/partners" },
+        { title: "Gallery", route: "/gallery" },
       ]
     };
   }
