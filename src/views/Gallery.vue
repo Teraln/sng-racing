@@ -4,20 +4,20 @@
     <v-btn @click="smoothScroll" text>button</v-btn>
     <TopParallax />
     <PartnerBelt />
-    <v-container id="gallery-container">
+    <v-container class="gallery-container">
       <!-- <h1 id="gallery-title">Gallery</h1> -->
       <!-- Control Buttons -->
-      <v-btn id="control-btn-next" @click="slideNext" text x-large icon color="primary">
+      <!-- <v-btn id="control-btn-next" @click="slideNext" text x-large icon color="primary">
         <v-icon>mdi-chevron-down</v-icon>
       </v-btn>
       <v-btn id="control-btn-prev" @click="slidePrev" text x-large icon color="primary">
         <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
+      </v-btn>-->
       <!-- Hooper -->
       <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
         <!-- Slides -->
         <slide id="gallery-slide" v-for="(item, index) in gallery" :key="index" :index="index">
-          <v-img contain id="item-image" :src="item.imageURL" :alt="item.title">
+          <v-img id="item-image" :src="item.imageURL" :alt="item.title" contain>
             <div id="item-title-container">
               <h5 id="item-title">{{item.title}}</h5>
             </div>
@@ -60,7 +60,6 @@ export default {
     return {
       gallery: [],
       hooperSettings: {
-        centerMode: true,
         vertical: true,
         itemsToShow: 1,
         infiniteScroll: true,
@@ -104,7 +103,7 @@ export default {
     rgba(35, 35, 35, 1) 95%
   );
   //Component wrapper
-  & #gallery-container {
+  & .gallery-container {
     //Title
     & #gallery-title {
       text-align: center;
@@ -113,35 +112,30 @@ export default {
     }
     //The hooper component
     & #gallery-hooper {
-      background-color: rgba($color: $grey, $alpha: 1);
+      background-color: rgba($color: $lightGrey, $alpha: 0.2);
       height: 80vh;
       margin: 10% 0 10% 0;
-      display: flex;
-      flex-direction: row;
-      //Nav buttons
-      & & #gallery-slide {
-        //Image element
-        & #item-image {
-          overflow: hidden;
-          position: relative;
-          width: 100%;
-          height: auto;
-          //Item title container
-          & #item-title-container {
-            transform: skew(15deg, 0deg);
-            position: absolute;
-            max-width: 70%;
-            top: 5%;
-            left: 5%;
-            background: rgba($color: $lightGrey, $alpha: 0.7);
-            //Item title
-            & #item-title {
-              transform: skew(-15deg, -0deg);
-              padding: 0.1rem 1rem 0.1rem 1rem;
-              color: $accent;
-              font-size: $fText;
-              font-weight: 300;
-            }
+      //Image element
+      & #item-image {
+        overflow: hidden;
+        position: relative;
+        max-width: 100%;
+        max-height: 90%;
+        //Item title container
+        & #item-title-container {
+          position: absolute;
+          transform: skew(15deg, 0deg);
+          max-width: 70%;
+          top: 5%;
+          left: 5%;
+          background: rgba($color: $lightGrey, $alpha: 0.7);
+          //Item title
+          & #item-title {
+            transform: skew(-15deg, -0deg);
+            padding: 0.1rem 1rem 0.1rem 1rem;
+            color: $accent;
+            font-size: $fText;
+            font-weight: 300;
           }
         }
       }
