@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO fix the centering of image issue -->
   <div class="Gallery">
     <Navbar />
     <v-btn @click="smoothScroll" text>button</v-btn>
@@ -17,16 +18,10 @@
           icon
           color="primary"
         >
-          <v-icon>mdi-chevron-down</v-icon>
+          <v-icon>mdi-chevron-right</v-icon>
         </v-btn>
-        <v-btn
-          id="control-btn-prev"
-          @click="slidePrev(); smoothScroll()"
-          text
-          icon
-          color="primary"
-        >
-          <v-icon>mdi-chevron-up</v-icon>
+        <v-btn id="control-btn-prev" @click="slidePrev(); smoothScroll()" text icon color="primary">
+          <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
 
         <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
@@ -75,12 +70,11 @@ export default {
     return {
       gallery: [],
       hooperSettings: {
-        vertical: true,
         itemsToShow: 1,
         infiniteScroll: true,
-        transition: 600,
+        transition: 300,
         wheelControl: false,
-        mouseDrag: false,
+        mouseDrag: true,
         touchDrag: false,
         keysControl: true
       }
@@ -120,6 +114,8 @@ export default {
   //Component wrapper
   & .gallery-container {
     height: 100vh;
+    padding-left: 0;
+    padding-right: 0;
     //Title
     & #gallery-title {
       text-align: center;
@@ -130,16 +126,16 @@ export default {
     & .hooper-container {
       height: 100%;
       position: relative;
-      & #control-btn-prev {
+      & #control-btn-next {
         position: absolute;
         top: 1rem;
         right: 2rem;
         z-index: 3;
       }
-      & #control-btn-next {
+      & #control-btn-prev {
         position: absolute;
-        bottom: 1rem;
-        right: 2rem;
+        top: 1rem;
+        left: 2rem;
         z-index: 3;
       }
 
@@ -156,8 +152,8 @@ export default {
             position: absolute;
             transform: skew(15deg, 0deg);
             max-width: 70%;
-            top: 2rem;
-            left: 2rem;
+            bottom: 2rem;
+            left: 1rem;
             background: rgba($color: $lightGrey, $alpha: 0.7);
             //Item title
             & #item-title {
@@ -186,14 +182,6 @@ export default {
           background-color: $primary;
         }
       }
-    }
-  }
-  & section#gallery-hooper {
-    position: relative;
-    & #control-btn-next {
-      position: absolute;
-      top: 10px;
-      right: 10px;
     }
   }
 }
