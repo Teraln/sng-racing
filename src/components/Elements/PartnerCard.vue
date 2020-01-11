@@ -1,10 +1,10 @@
 <template>
   <v-container class="DriverCard">
-    <v-col cols="4" offset="4" class="pb-2">
+    <v-col cols="6" offset="3" class="pb-2">
       <v-img :src="partner.imageURL" contain></v-img>
     </v-col>
-    <v-col cols="8" offset="2" class="pa-5" id="text-div">
-      <p min-height="200">{{ partner.text }}</p>
+    <v-col cols="10" offset="1" class="px-5 pt-5" id="text-div">
+      <p>{{ partner.text }}</p>
     </v-col>
     <v-col cols="4" offset="4" id="link-container" class="pb-5">
       <a :href="partner.link">
@@ -25,23 +25,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#text-div {
-  border-top: solid 1px $primary;
-  font-size: $fSmall;
-  height: 200px;
-}
+.DriverCard {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  #text-div {
+    border-top: solid 1px $primary;
+    font-size: $fSmall;
+    height: 11rem;
+  }
 
-#link-container {
-  display: flex;
-  justify-content: center;
-  border-bottom: solid 1px $primary;
+  #link-container {
+    display: flex;
+    justify-content: center;
+    border-bottom: solid 1px $primary;
 
-  #website-link {
-    transition: background-color 0.5s;
-    transition: color 0.5s;
-    &:hover {
-      background-color: $primary;
-      color: $secondary;
+    #website-link {
+      transition: background-color 0.5s;
+      transition: color 0.5s;
+      &:hover {
+        background-color: $primary;
+        color: $secondary;
+      }
     }
   }
 }
