@@ -6,7 +6,7 @@
     <v-container>
       <v-row id="drivers-row" justify="center">
         <v-col v-for="driver in drivers" :key="driver.id" lg="4" md="6" sm="12">
-          <DriverCard :driver="driver" />
+          <DriverCard :driver="driver" :grid="grid" />
         </v-col>
       </v-row>
     </v-container>
@@ -25,7 +25,10 @@ export default {
   components: { Navbar, TopParallax, PartnerBelt, DriverCard },
   data() {
     return {
-      drivers: []
+      drivers: [],
+      //Determines the layout of the DriverCard component
+      //true == horizontal, false == vertical
+      grid: false,
     };
   },
   mounted() {

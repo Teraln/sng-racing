@@ -3,7 +3,7 @@
     <v-row>
       <!-- LEFT SIDE -->
       <!-- TODO Vertical on drivers page, horizontal on homepage -->
-      <v-col id="left-side-container" cols="12">
+      <v-col id="left-side-container" :cols="returnCardLayout(grid)[0]">
         <!-- Image -->
         <v-col id="driver-name-container" cols="8" offset="2">
           <h1 id="driver-name">{{ `${driver.name} ${driver.lastname}` }}</h1>
@@ -16,7 +16,7 @@
 
       <!-- RIGHT SIDE -->
       <!-- TODO Vertical on drivers page, horizontal on homepage -->
-      <v-col id="right-side-container" cols="10" offset="1">
+      <v-col id="right-side-container" :cols="returnCardLayout(grid)[1]" offset="1">
         <v-col class="py-2 px-4" cols="12">
           <v-row>
             <v-col id="property" class="py-0" cols="3">Country:</v-col>
@@ -61,16 +61,26 @@
 <script>
 export default {
   name: "DriverCard",
-  props: ["driver"],
+  props: ["driver", "grid"],
   data() {
     return {};
   },
+
   methods: {
     getAge(e) {
       const ageDiffMs = Date.now() - new Date(`${e.year}-${e.month}-${e.day}`);
       const ageDate = new Date(ageDiffMs);
 
       return Math.abs(ageDate.getUTCFullYear() - 1970);
+    },
+    returnCardLayout(prop) {
+      let grid = [];
+      if (prop) {
+        grid = [4, 6];
+      } else {
+        grid = [12, 10];
+      }
+      return grid;
     }
   }
 };
