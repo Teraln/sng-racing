@@ -119,13 +119,13 @@ export default {
       & #control-btn-next {
         position: absolute;
         right: 1rem;
-        top: 50%;
+        top: 25%;
         z-index: 2;
       }
       & #control-btn-prev {
         position: absolute;
         left: 1rem;
-        top: 50%;
+        top: 25%;
         z-index: 2;
       }
     }
