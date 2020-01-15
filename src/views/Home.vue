@@ -1,14 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <Navbar />
+    <TopParallax />
+    <PartnerBelt />
+    <v-container>
+      
+    </v-container>
+    <DriverCard />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import Navbar from "../components/Navbar";
+import TopParallax from "../components/TopParallax";
+import PartnerBelt from "../components/PartnerBelt";
+import DriverCard from "../components/Elements/DriverCard";
 
 export default {
   name: "home",
-  components: {}
+  components: { Navbar, TopParallax, PartnerBelt, DriverCard }
 };
 </script>
