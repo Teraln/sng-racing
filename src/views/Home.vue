@@ -72,7 +72,8 @@ export default {
         wheelControl: false,
         mouseDrag: true,
         touchDrag: false,
-        keysControl: true
+        keysControl: true,
+        centerMode: true,
       }
     };
   },

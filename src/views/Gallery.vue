@@ -2,10 +2,9 @@
   <!-- TODO fix the centering of image issue -->
   <div class="Gallery">
     <Navbar />
-    <v-btn @click="smoothScroll" text>button</v-btn>
     <TopParallax />
     <PartnerBelt />
-    <v-container class="gallery-container">
+    <div class="gallery-container">
       <!-- <h1 id="gallery-title">Gallery</h1> -->
 
       <!-- Hooper -->
@@ -36,7 +35,7 @@
           <hooper-pagination slot="hooper-addons"></hooper-pagination>
         </hooper>
       </div>
-    </v-container>
+    </div>
   </div>
 </template>
 
@@ -76,7 +75,7 @@ export default {
         wheelControl: false,
         mouseDrag: true,
         touchDrag: false,
-        keysControl: true
+        keysControl: true,
       }
     };
   },

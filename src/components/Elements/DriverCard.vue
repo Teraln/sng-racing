@@ -3,7 +3,11 @@
     <v-row>
       <!-- LEFT SIDE -->
       <!-- TODO Vertical on drivers page, horizontal on homepage -->
-      <v-col id="left-side-container" :cols="returnCardLayout(grid)[0]">
+      <v-col
+        id="left-side-container"
+        :cols="returnCardLayout(grid).cols[0]"
+        :offset="returnCardLayout(grid).offset[0]"
+      >
         <!-- Image -->
         <v-col id="driver-name-container" cols="8" offset="2">
           <h1 id="driver-name">{{ `${driver.name} ${driver.lastname}` }}</h1>
@@ -16,7 +20,11 @@
 
       <!-- RIGHT SIDE -->
       <!-- TODO Vertical on drivers page, horizontal on homepage -->
-      <v-col id="right-side-container" :cols="returnCardLayout(grid)[1]" offset="1">
+      <v-col
+        id="right-side-container"
+        :cols="returnCardLayout(grid).cols[1]"
+        :offset="returnCardLayout(grid).offset[1]"
+      >
         <v-col class="py-2 px-4" cols="12">
           <v-row>
             <v-col id="property" class="py-0" cols="3">Country:</v-col>
@@ -76,19 +84,21 @@ export default {
     returnCardLayout(prop) {
       let grid = [];
       if (prop) {
-        grid = [4, 6];
+        //Lateral
+        grid = { cols: [6, 4], offset: [0, 0] };
       } else {
-        grid = [12, 10];
+        //Vertical
+        grid = { cols: [12, 8], offset: [0, 2] };
       }
       return grid;
-    }
+    },
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .DriverCard {
-  background-color: rgba($color: $grey, $alpha: 0.5);
+  // background-color: rgba($color: $grey, $alpha: 0.5);
   & #left-side-container {
     & #driver-name-container {
       background-color: $primary;
@@ -106,23 +116,25 @@ export default {
   }
 
   #right-side-container {
-    transform: skew(-3deg, 0deg);
     background-color: $grey;
     outline: solid 1px $lightGrey;
     outline-offset: 0.3rem;
+    //TODO Remove or add later
+    // transform: skew(-3deg, 0deg);
 
     & #property {
       font-size: $fSmall;
       color: $primary;
       text-align: end;
       font-weight: 500;
-      transform: skew(3deg, 0deg);
+      // transform: skew(3deg, 0deg);
     }
     & #info {
       font-size: $fSmall;
       font-weight: 300;
-      transform: skew(3deg, 0deg);
+      // transform: skew(3deg, 0deg);
     }
   }
 }
+
 </style>
