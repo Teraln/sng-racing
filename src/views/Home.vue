@@ -13,7 +13,7 @@
             <!-- Control Buttons -->
             <v-btn
               id="control-btn-next"
-              @click="slideNext(); smoothScroll();"
+              @click="slideNext()"
               x-large
               text
               icon
@@ -23,7 +23,7 @@
             </v-btn>
             <v-btn
               id="control-btn-prev"
-              @click="slidePrev(); smoothScroll()"
+              @click="slidePrev()"
               x-large
               text
               icon
