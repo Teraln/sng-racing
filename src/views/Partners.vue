@@ -9,6 +9,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <Footer />
   </div>
 </template>
 
@@ -17,10 +18,11 @@
 import Navbar from "../components/Navbar";
 import TopParallax from "../components/TopParallax";
 import PartnerCard from "../components/Elements/PartnerCard";
+import Footer from "../components/Footer";
 
 export default {
   name: "Partners",
-  components: { Navbar, TopParallax, PartnerCard },
+  components: { Navbar, TopParallax, PartnerCard, Footer },
   data() {
     return {
       partners: []

@@ -36,6 +36,7 @@
         </hooper>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -44,6 +45,7 @@
 import Navbar from "../components/Navbar";
 import TopParallax from "../components/TopParallax";
 import PartnerBelt from "../components/PartnerBelt";
+import Footer from "../components/Footer";
 
 import {
   Hooper,
@@ -63,7 +65,8 @@ export default {
     Hooper,
     Slide,
     HooperPagination,
-    HooperProgress
+    HooperProgress,
+    Footer
   },
   data() {
     return {
@@ -75,7 +78,7 @@ export default {
         wheelControl: false,
         mouseDrag: true,
         touchDrag: false,
-        keysControl: true,
+        keysControl: true
       }
     };
   },

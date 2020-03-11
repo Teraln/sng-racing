@@ -31,7 +31,7 @@ export default {
   #text-div {
     border-top: solid 1px $primary;
     font-size: $fSmall;
-    height: 11rem;
+    height: 11.5rem;
   }
 
   #link-container {

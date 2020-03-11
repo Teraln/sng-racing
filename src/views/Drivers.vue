@@ -10,6 +10,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <Footer />
   </div>
 </template>
 
@@ -19,16 +20,17 @@ import Navbar from "../components/Navbar";
 import TopParallax from "../components/TopParallax";
 import PartnerBelt from "../components/PartnerBelt";
 import DriverCard from "../components/Elements/DriverCard";
+import Footer from "../components/Footer";
 
 export default {
   name: "Drivers",
-  components: { Navbar, TopParallax, PartnerBelt, DriverCard },
+  components: { Navbar, TopParallax, PartnerBelt, DriverCard, Footer },
   data() {
     return {
       drivers: [],
       //Determines the layout of the DriverCard component
       //true == horizontal, false == vertical
-      grid: false,
+      grid: false
     };
   },
   mounted() {
