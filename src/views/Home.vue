@@ -11,24 +11,10 @@
           <!-- Hooper -->
           <div class="home-hooper-container">
             <!-- Control Buttons -->
-            <v-btn
-              id="control-btn-next"
-              @click="slideNext()"
-              x-large
-              text
-              icon
-              color="primary"
-            >
+            <v-btn id="control-btn-next" @click="slideNext()" x-large text icon color="primary">
               <v-icon>mdi-chevron-right</v-icon>
             </v-btn>
-            <v-btn
-              id="control-btn-prev"
-              @click="slidePrev()"
-              x-large
-              text
-              icon
-              color="primary"
-            >
+            <v-btn id="control-btn-prev" @click="slidePrev()" x-large text icon color="primary">
               <v-icon>mdi-chevron-left</v-icon>
             </v-btn>
 
@@ -47,6 +33,7 @@
         </v-col>
       </v-row>
     </v-container>
+    <Footer />
   </div>
 </template>
 
@@ -55,12 +42,22 @@ import Navbar from "../components/Navbar";
 import TopParallax from "../components/TopParallax";
 import PartnerBelt from "../components/PartnerBelt";
 import DriverCard from "../components/Elements/DriverCard";
+import Footer from "../components/Footer";
 
 import { Hooper, Slide } from "hooper";
 
 export default {
   name: "Home",
-  components: { Navbar, TopParallax, PartnerBelt, DriverCard, Hooper, Slide },
+  components: {
+    Navbar,
+    TopParallax,
+    PartnerBelt,
+    DriverCard,
+    Hooper,
+    Slide,
+    Footer
+  },
+
   data() {
     return {
       drivers: [],
@@ -73,7 +70,7 @@ export default {
         mouseDrag: true,
         touchDrag: false,
         keysControl: true,
-        centerMode: true,
+        centerMode: true
       }
     };
   },
