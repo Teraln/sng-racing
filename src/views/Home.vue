@@ -113,6 +113,9 @@ export default {
       position: relative;
       & #home-driver-hooper {
         height: 100%;
+        & .hooper-track {
+          padding-left: 0;
+        }
       }
       & #control-btn-next {
         position: absolute;

@@ -85,7 +85,7 @@ export default {
       let grid = [];
       if (prop) {
         //Lateral
-        grid = { cols: [6, 4], offset: [0, 0] };
+        grid = { cols: [5, 4], offset: [1, 0] };
       } else {
         //Vertical
         grid = { cols: [12, 8], offset: [0, 2] };

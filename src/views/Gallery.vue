@@ -147,6 +147,9 @@ export default {
         border-bottom: 1px $primary solid;
         height: 100%;
         //Image element
+        & .hooper-track {
+          padding-left: 0;
+        }
         & #gallery-slide {
           position: relative;
           //Item title container

@@ -51,6 +51,9 @@ export default {
   & .hooper {
     outline: none;
     height: 6rem;
+    & .hooper-track {
+      padding-left: 0;
+    }
     & .hooper-slide {
       background-color: transparent;
       display: grid;
