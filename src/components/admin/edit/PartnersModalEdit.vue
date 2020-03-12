@@ -85,7 +85,6 @@ export default {
 
     uploadImage(file) {
       //TODO delet
-      console.log(file);
       this.dialog = false;
 
       if (!file) {

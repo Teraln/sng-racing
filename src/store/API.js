@@ -61,9 +61,11 @@ class API {
     db.collection(collection)
       .add(docData)
       .then(docRef => {
-        console.log("New document successfully written! =>", docRef.id);
+        return docRef;
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        return err;
+      });
   }
 
   deleteEntry(collection, id) {
@@ -71,10 +73,10 @@ class API {
       .doc(id)
       .delete()
       .then(() => {
-        console.log("Document successfully deleted!", id);
+        return id;
       })
       .catch(error => {
-        console.error("Error removing document: ", error);
+        return error;
       });
   }
 
@@ -101,15 +103,14 @@ class API {
       snapshot => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
+        return progress;
       },
       error => {
-        console.log(error);
+        return error;
       },
       () => {
         // Upload completed successfully, now we can get the download URL
         uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
-          console.log(downloadURL);
           updateDB(downloadURL);
         });
       }
@@ -120,9 +121,7 @@ class API {
   //DATE HANDLER
   dateToUnix(year, month, day) {
     const stringify = `${year}-${month}-${day}`;
-    console.log(stringify);
     const unix = parseInt((new Date(stringify).getTime() / 1000).toFixed(0));
-    console.log(unix);
     return unix;
   }
 }

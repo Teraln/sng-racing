@@ -72,8 +72,6 @@ export default {
       this.success = true;
     },
     uploadImage(file) {
-      //TODO delet
-      console.log(file);
       this.dialog = false;
       if (file === null) {
         this.setNewPartner();

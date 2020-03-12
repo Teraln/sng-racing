@@ -13,7 +13,7 @@
           <v-form ref="form" lazy-validation>
             <v-text-field v-model="email" label="E-mail" required></v-text-field>
             <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
-            <v-btn @click="login" outlined color="primary">Enter</v-btn>
+            <v-btn @click="login" outlined color="primary">Login</v-btn>
           </v-form>
         </v-col>
       </v-row>
