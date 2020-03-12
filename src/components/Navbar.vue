@@ -8,19 +8,24 @@
 
         <template v-if="$vuetify.breakpoint.smAndUp">
           <v-toolbar-items v-for="item in menu" :key="item.title">
-            <v-btn id="link" class="mx-2 px-4 py-0" small text  :to="item.route">{{ item.title }}</v-btn>
+            <v-btn id="link" class="mx-2 px-4 py-0" small text :to="item.route">{{ item.title }}</v-btn>
           </v-toolbar-items>
         </template>
         <!-- TODO add burger menu -->
-        <template v-else></template>
+        <template v-else>
+          <BurgerMenu />
+        </template>
       </v-toolbar>
     </v-container>
   </div>
 </template>
 
 <script>
+import BurgerMenu from "./Elements/BurgerMenu";
+
 export default {
   name: "Navbar",
+  components: { BurgerMenu },
   data() {
     return {
       //Routes (Views)
@@ -28,7 +33,7 @@ export default {
         { title: "Home", route: "/" },
         { title: "Drivers", route: "/drivers" },
         { title: "Partners", route: "/partners" },
-        { title: "Gallery", route: "/gallery" },
+        { title: "Gallery", route: "/gallery" }
       ]
     };
   }
