@@ -1,7 +1,7 @@
 <template>
   <div class="Partners">
     <Navbar />
-    <TopParallax />
+    <!-- <TopParallax /> -->
     <v-container>
       <v-row justify="center">
         <v-col v-for="partner in partners" :key="partner.id" lg="4" md="6" sm="12">
@@ -16,13 +16,13 @@
 
 <script>
 import Navbar from "../components/Navbar";
-import TopParallax from "../components/TopParallax";
+// import TopParallax from "../components/TopParallax";
 import PartnerCard from "../components/Elements/PartnerCard";
 import Footer from "../components/Footer";
 
 export default {
   name: "Partners",
-  components: { Navbar, TopParallax, PartnerCard, Footer },
+  components: { Navbar, PartnerCard, Footer },
   data() {
     return {
       partners: []

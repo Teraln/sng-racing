@@ -14,8 +14,6 @@
             <v-text-field v-model="email" label="E-mail" required></v-text-field>
             <v-text-field v-model="password" label="Password" type="password" required></v-text-field>
             <v-btn @click="login" outlined color="primary">Enter</v-btn>
-            <v-btn @click="test" outlined color="primary">Current</v-btn>
-            <v-btn @click="signOut" outlined color="primary">Sign out</v-btn>
           </v-form>
         </v-col>
       </v-row>
@@ -43,25 +41,24 @@ export default {
         })
         .catch(error => {
           // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          console.log(errorCode, errorMessage, fb.auth().currentUser);
+          // var errorCode = error.code;
+          // var errorMessage = error.message;
+          // console.log(errorCode, errorMessage, fb.auth().currentUser);
+          return error;
         });
     },
     // TEST
     test: function() {
-      //TODO delet dis
-      // console.log(fb.auth().currentUser);
       API.getDrivers();
     },
     signOut: function() {
       fb.auth()
         .signOut()
         .then(function() {
-          console.log("Sign-out successful.");
+          return;
         })
         .catch(function(error) {
-          console.log(error);
+          return error;
         });
     }
     //TEST
