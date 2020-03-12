@@ -1,5 +1,5 @@
 <template>
-  <v-container class="DriverCard">
+  <v-container class="PartnerCard">
     <v-col cols="6" offset="3" class="pb-2">
       <v-img :src="partner.imageURL" contain></v-img>
     </v-col>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.DriverCard {
+.PartnerCard {
   margin-top: 3rem;
   margin-bottom: 3rem;
   #text-div {

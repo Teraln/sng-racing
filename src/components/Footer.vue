@@ -11,8 +11,9 @@
               target="blank"
               class="mx-4 white--text"
               icon
+              id="footer-link"
             >
-              <v-icon size="24px">{{ icon.icon }}</v-icon>
+              <v-icon id="footer-link-icon" size="24px">{{ icon.icon }}</v-icon>
             </v-btn>
           </v-card-text>
 
@@ -48,3 +49,21 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+#footer-link {
+  transition: background-color 0.5s;
+  transition: color 0.5s;
+  &:hover {
+    background-color: $primary;
+    color: $secondary;
+  }
+  #footer-link-icon {
+    transition: background-color 0.5s;
+    transition: color 0.5s;
+    &:hover {
+      background-color: $primary;
+      color: $secondary;
+    }
+  }
+}
+</style>
