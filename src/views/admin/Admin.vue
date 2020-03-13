@@ -37,6 +37,17 @@
             </v-list-item>
           </router-link>
 
+          <router-link to="/admin/news">
+            <v-list-item link>
+              <v-list-item-action>
+                <v-icon>mdi-newspaper</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>News</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </router-link>
+
           <router-link to="/admin/partners">
             <v-list-item link>
               <v-list-item-action>

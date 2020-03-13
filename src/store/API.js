@@ -32,6 +32,19 @@ class API {
     };
   }
 
+  newsTemplate() {
+    return {
+      title: null,
+      subtitle: null,
+      platform: null,
+      paragraph: [],
+      imageURL: [],
+      year: null,
+      month: null,
+      day: null
+    };
+  }
+
   //READ
   getData(collection) {
     const fbData = [];

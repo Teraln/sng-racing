@@ -1,95 +1,100 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-import Home from '../views/Home.vue'
-import Drivers from '../views/Drivers.vue'
-import Partners from '../views/Partners.vue'
-import Gallery from '../views/Gallery.vue'
+import Home from "../views/Home.vue";
+import Drivers from "../views/Drivers.vue";
+import Partners from "../views/Partners.vue";
+import Gallery from "../views/Gallery.vue";
 
-import Login from '../views/admin/Login.vue'
-import Admin from '../views/admin/Admin.vue'
-import DriversAdmin from '../views/admin/DriversAdmin.vue'
-import SeriesAdmin from '../views/admin/SeriesAdmin.vue'
-import GalleryAdmin from '../views/admin/GalleryAdmin.vue'
-import PartnersAdmin from '../views/admin/PartnersAdmin.vue'
-import { fb } from '@/firebase.js'
+import Login from "../views/admin/Login.vue";
+import Admin from "../views/admin/Admin.vue";
+import DriversAdmin from "../views/admin/DriversAdmin.vue";
+import SeriesAdmin from "../views/admin/SeriesAdmin.vue";
+import GalleryAdmin from "../views/admin/GalleryAdmin.vue";
+import PartnersAdmin from "../views/admin/PartnersAdmin.vue";
+import NewsAdmin from "../views/admin/NewsAdmin.vue";
+import { fb } from "@/firebase.js";
 
-
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '*',
-    redirect: '/'
+    path: "*",
+    redirect: "/"
   },
   {
-    path: '/',
-    name: 'home',
+    path: "/",
+    name: "home",
     component: Home
   },
   {
-    path: '/drivers',
-    name: 'drivers',
+    path: "/drivers",
+    name: "drivers",
     component: Drivers
   },
   {
-    path: '/partners',
-    name: 'partners',
+    path: "/partners",
+    name: "partners",
     component: Partners
   },
   {
-    path: '/gallery',
-    name: 'gallery',
+    path: "/gallery",
+    name: "gallery",
     component: Gallery
   },
 
-
-
-
   //ADMIN SECTION
   {
-    path: '/login',
-    name: 'login',
+    path: "/login",
+    name: "login",
     component: Login
   },
   {
-    path: '/admin',
-    name: 'admin',
+    path: "/admin",
+    name: "admin",
     component: Admin,
     meta: {
-      requiresAuth: true,
+      requiresAuth: true
     },
     children: [
       {
-        path: 'drivers',
-        name: 'drivers-admin',
+        path: "drivers",
+        name: "drivers-admin",
         component: DriversAdmin,
         meta: {
-          requiresAuth: true,
+          requiresAuth: true
         }
       },
       {
-        path: 'series',
-        name: 'series-admin',
+        path: "series",
+        name: "series-admin",
         component: SeriesAdmin,
         meta: {
-          requiresAuth: true,
+          requiresAuth: true
         }
       },
       {
-        path: 'gallery',
-        name: 'gallery-admin',
+        path: "gallery",
+        name: "gallery-admin",
         component: GalleryAdmin,
         meta: {
-          requiresAuth: true,
+          requiresAuth: true
         }
       },
       {
-        path: 'partners',
-        name: 'partners-admin',
+        path: "partners",
+        name: "partners-admin",
         component: PartnersAdmin,
         meta: {
-          requiresAuth: true,
+          requiresAuth: true
+        }
+      },
+      {
+        path: "news",
+        name: "news-admin",
+        component: NewsAdmin,
+        meta: {
+          requiresAuth: true
         }
       }
     ]
@@ -97,32 +102,30 @@ const routes = [
   // route level code-splitting
   // this generates a separate chunk (about.[hash].js) for this route
   // which is lazy-loaded when the route is visited.
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes
-})
-
+});
 
 router.beforeEach((to, from, next) => {
-
-  const currentUser = fb.auth().currentUser
+  const currentUser = fb.auth().currentUser;
   //If requires auth
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
     if (!currentUser) {
       next({
-        path: '/login',
-      })
+        path: "/login"
+      });
     } else {
-      next()
+      next();
     }
   } else {
-    next()
+    next();
   }
-})
+});
 
-export default router
+export default router;
