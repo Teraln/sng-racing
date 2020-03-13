@@ -35,7 +35,6 @@ class API {
   newsTemplate() {
     return {
       title: null,
-      subtitle: null,
       platform: null,
       paragraph: [],
       imageURL: [],

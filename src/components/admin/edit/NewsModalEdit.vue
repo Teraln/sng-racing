@@ -1,39 +1,26 @@
 <template>
-  <div class="DriversModalEdit">
+  <div class="NewsModalEdit">
     <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on }">
         <v-btn color="primary" dark v-on="on">edit</v-btn>
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline text-capitalize">{{ `${driver.name} ${driver.lastname}` }}</span>
+          <span class="text-capitalize">{{ news.title }}</span>
         </v-card-title>
         <v-card-text>
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="First name" v-model="localData.name" ref="focus" required></v-text-field>
+                <v-text-field label="Title" v-model="localData.title" ref="focus" required></v-text-field>
               </v-col>
-              <!-- <v-col cols="12" sm="6" md="4"> -->
-              <!-- <v-text-field label="Nickname"></v-text-field> -->
-              <!-- hint="example of helper text only on focus" -->
-              <!-- hint="example of persistent helper text" persistent-hint-->
-              <!-- </v-col> -->
+
               <v-col cols="12" md="6" sm="6">
-                <v-text-field label="Last name" v-model="localData.lastname" required></v-text-field>
-              </v-col>
-              <v-col cols="6">
-                <v-text-field label="Country" v-model="localData.country" required></v-text-field>
-              </v-col>
-              <v-col cols="6">
-                <v-text-field label="Role" v-model="localData.role" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Series" v-model="localData.series" required></v-text-field>
+                <v-text-field label="Platform (Sim)" v-model="localData.platform" required></v-text-field>
               </v-col>
 
               <v-col cols="12" class="pb-0">
-                <small>Birth date</small>
+                <small>Date</small>
               </v-col>
               <v-col cols="4">
                 <v-text-field label="DD" type="number" v-model.number="localData.day" maxlength="2"></v-text-field>
@@ -55,7 +42,7 @@
                 ></v-text-field>
               </v-col>
 
-              <!--Driver photo upload-->
+              <!--photo upload-->
               <v-col cols="10">
                 <v-file-input
                   label="Upload photo"
@@ -68,8 +55,11 @@
               </v-col>
               <v-col cols="2" justify="center" align="center">
                 <v-avatar>
-                  <img :src="driver.imageURL" alt="No image" />
+                  <img :src="news.imageURL" alt="No image" />
                 </v-avatar>
+              </v-col>
+              <v-col cols="12">
+                <v-textarea rows="30" outlined label="Article text" v-model="localData.text" required></v-textarea>
               </v-col>
             </v-row>
           </v-container>
@@ -85,15 +75,14 @@
 </template>
 
 <script>
-//import { mapActions, mapMutations } from "vuex";
 import API from "@/store/API.js";
 
 export default {
-  name: "DriversModalEdit",
-  props: ["driver", "getDrivers"],
+  name: "NewsModalEdit",
+  props: ["news", "getNews"],
   data() {
     return {
-      localData: API.driverTemplate(),
+      localData: API.newsTemplate(),
 
       dialog: false,
       success: false,
@@ -103,17 +92,14 @@ export default {
   methods: {
     assignDefaultValues() {
       const ld = this.localData;
-      const d = this.driver;
-      ld.name = d.name;
-      ld.lastname = d.lastname;
-      ld.country = d.country;
-      ld.role = d.role;
-      ld.id = d.id;
-      ld.series = d.series;
-      ld.year = d.year;
-      ld.month = d.month;
+      const d = this.news;
+      ld.title = d.title;
+      ld.platform = d.platform;
       ld.day = d.day;
+      ld.month = d.month;
+      ld.year = d.year;
       ld.imageURL = d.imageURL;
+      ld.paragraph = d.paragraph;
     },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;
@@ -121,24 +107,23 @@ export default {
     },
 
     uploadImage(file) {
-      //TODO delet
       this.dialog = false;
 
       if (!file) {
         this.saveEdits();
       } else {
-        API.postFile("drivers", file.name, file, this.saveEdits);
+        API.postFile("news", file.name, file, this.saveEdits);
       }
     },
     saveEdits(link) {
       if (!link) {
-        API.edit("drivers", this.localData, this.localData.id);
+        API.edit("news", this.localData, this.localData.id);
       } else {
         this.localData.imageURL = link;
-        API.edit("drivers", this.localData, this.localData.id);
+        API.edit("news", this.localData, this.localData.id);
       }
 
-      this.getDrivers();
+      this.getNews();
     }
   },
   watch: {

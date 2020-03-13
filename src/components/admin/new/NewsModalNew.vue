@@ -86,7 +86,7 @@
 import API from "@/store/API.js";
 
 export default {
-  name: "DriversModalNew",
+  name: "NewsModalNew",
   props: ["getDrivers"],
   data() {
     return {
