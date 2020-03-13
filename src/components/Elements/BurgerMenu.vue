@@ -1,6 +1,10 @@
 <template>
   <div class="BurgerMenu">
-    <button class="hamburger" type="button">
+    <button
+      @click="this.toggleClasses"
+      :class="`hamburger hamburger--collapse ${this.bool ? this.classList[0] : this.classList[1]}`"
+      type="button"
+    >
       <span class="hamburger-box">
         <span class="hamburger-inner"></span>
       </span>
@@ -12,7 +16,15 @@
 export default {
   name: "BurgerMenu",
   data() {
-    return {};
+    return {
+      classList: ["is-active", ""],
+      bool: false
+    };
+  },
+  methods: {
+    toggleClasses() {
+      this.bool = !this.bool;
+    }
   }
 };
 </script>
@@ -42,7 +54,7 @@ export default {
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-  background-color: #000;
+  background-color: $accent;
 }
 
 .hamburger-box {
@@ -60,9 +72,9 @@ export default {
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-  width: 40px;
+  width: 100%;
   height: 4px;
-  background-color: $primary;
+  background-color: $accent;
   border-radius: 4px;
   position: absolute;
   transition-property: transform;
