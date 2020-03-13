@@ -1,40 +1,36 @@
 <template>
   <div class="Navbar">
-    <v-container>
+    <v-container v-if="$vuetify.breakpoint.smAndUp">
       <v-toolbar id="toolbar" color="secondary" height="50">
         <v-toolbar-title id="toolbar-title">Singularity Racing</v-toolbar-title>
 
         <v-spacer></v-spacer>
 
-        <template v-if="$vuetify.breakpoint.smAndUp">
+        <template>
           <v-toolbar-items v-for="item in menu" :key="item.title">
             <v-btn id="link" class="mx-2 px-4 py-0" small text :to="item.route">{{ item.title }}</v-btn>
           </v-toolbar-items>
         </template>
-        <!-- TODO add burger menu -->
-        <template v-else>
-          <BurgerMenu />
-        </template>
       </v-toolbar>
     </v-container>
+
+    <!-- TODO add burger menu -->
+    <template v-else>
+      <MenuDrawer />
+    </template>
   </div>
 </template>
 
 <script>
-import BurgerMenu from "./Elements/BurgerMenu";
+import MenuDrawer from "./Elements/MenuDrawer";
 
 export default {
   name: "Navbar",
-  components: { BurgerMenu },
+  components: { MenuDrawer },
   data() {
     return {
       //Routes (Views)
-      menu: [
-        { title: "Home", route: "/" },
-        { title: "Drivers", route: "/drivers" },
-        { title: "Partners", route: "/partners" },
-        { title: "Gallery", route: "/gallery" }
-      ]
+      menu: this.$store.getters.routes
     };
   }
 };
