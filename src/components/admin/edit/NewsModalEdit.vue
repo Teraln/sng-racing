@@ -105,8 +105,8 @@ export default {
       ld.month = d.month;
       ld.year = d.year;
       ld.imageURL = d.imageURL;
-      ld.paragraph = d.paragraph;
       ld.text = d.text;
+      ld.id = d.id;
     },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;

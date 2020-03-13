@@ -36,8 +36,7 @@ class API {
     return {
       title: null,
       platform: null,
-      paragraph: [],
-      imageURL: [],
+      imageURL: null,
       year: null,
       month: null,
       day: null,
