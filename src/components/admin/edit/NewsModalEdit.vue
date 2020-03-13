@@ -11,7 +11,7 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="12" sm="6" md="4">
+              <v-col cols="12">
                 <v-text-field label="Title" v-model="localData.title" ref="focus" required></v-text-field>
               </v-col>
 
@@ -59,7 +59,13 @@
                 </v-avatar>
               </v-col>
               <v-col cols="12">
-                <v-textarea rows="30" outlined label="Article text" v-model="localData.text" required></v-textarea>
+                <v-textarea
+                  rows="30"
+                  outlined
+                  label="Article text"
+                  v-model="localData.text"
+                  required
+                ></v-textarea>
               </v-col>
             </v-row>
           </v-container>
@@ -100,6 +106,7 @@ export default {
       ld.year = d.year;
       ld.imageURL = d.imageURL;
       ld.paragraph = d.paragraph;
+      ld.text = d.text;
     },
     saveImageSnapshot(file) {
       this.imageSnapshot = file;

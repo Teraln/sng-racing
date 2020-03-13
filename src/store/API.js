@@ -40,7 +40,8 @@ class API {
       imageURL: [],
       year: null,
       month: null,
-      day: null
+      day: null,
+      text: null
     };
   }
 

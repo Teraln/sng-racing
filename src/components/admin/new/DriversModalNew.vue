@@ -1,5 +1,5 @@
 <template>
-  <div class="DriversModalEdit">
+  <div class="DriversModalNew">
     <v-dialog v-model="dialog" max-width="600px">
       <template v-slot:activator="{ on }">
         <v-btn fab dark color="primary" v-on="on">
