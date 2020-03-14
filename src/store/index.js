@@ -9,14 +9,13 @@ export default new Vuex.Store({
     drivers: [],
     partners: [],
     gallery: [],
+
     routes: [
       { title: "Home", route: "/" },
       { title: "Drivers", route: "/drivers" },
       { title: "Partners", route: "/partners" },
       { title: "Gallery", route: "/gallery" }
     ]
-
-    //TODO Add db collections here
   },
   mutations: {
     setDrivers: (state, payload) => {
@@ -31,13 +30,19 @@ export default new Vuex.Store({
   },
   actions: {
     fetchDrivers() {
-      this.commit("setDrivers", API.getData("drivers"));
+      API.getData("drivers").then(data => {
+        this.commit("setDrivers", data);
+      });
     },
     fetchPartners() {
-      this.commit("setPartners", API.getData("partners"));
+      API.getData("partners").then(data => {
+        this.commit("setPartners", data);
+      });
     },
     fetchGallery() {
-      this.commit("setGallery", API.getData("gallery"));
+      API.getData("gallery").then(data => {
+        this.commit("setGallery", data);
+      });
     }
   },
   getters: {

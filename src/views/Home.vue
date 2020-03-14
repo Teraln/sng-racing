@@ -68,7 +68,7 @@ export default {
         transition: 300,
         wheelControl: false,
         mouseDrag: true,
-        touchDrag: false,
+        touchDrag: true,
         keysControl: true,
         centerMode: true
       }

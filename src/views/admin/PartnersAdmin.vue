@@ -27,7 +27,6 @@
                 <v-card-actions>
                   <PartnersModalEdit :partner="partner" :getPartners="getPartners" />
                   <v-btn text outlined color="accent" @click="deletePartner(partner.id)">delete</v-btn>
-
                 </v-card-actions>
 
                 <v-expand-transition>
@@ -65,7 +64,9 @@ export default {
   computed: {},
   methods: {
     getPartners() {
-      this.allPartners = API.getData("partners");
+      API.getData("partners").then(data => {
+        this.allPartners = data;
+      });
     },
     deletePartner(id) {
       if (window.confirm("Do you really want to delete this entry?")) {

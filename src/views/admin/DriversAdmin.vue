@@ -72,7 +72,9 @@ export default {
   computed: {},
   methods: {
     getDrivers() {
-      this.allDrivers = API.getData("drivers");
+      API.getData("drivers").then(data => {
+        this.allDrivers = data;
+      });
     },
     deleteDriver(id) {
       if (window.confirm("Do you really want to delete this entry?")) {
