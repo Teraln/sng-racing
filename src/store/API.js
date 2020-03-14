@@ -40,26 +40,28 @@ class API {
       year: null,
       month: null,
       day: null,
-      text: null
+      text: null,
+      unix: null
     };
   }
 
   //READ
   getData(collection) {
-    const fbData = [];
-    db.collection(collection)
+    return db
+      .collection(collection)
       .get()
       .then(querySnapshot => {
+        const fbData = [];
         querySnapshot.forEach(doc => {
           const dataWithID = Object.assign(doc.data(), { id: doc.id });
 
           fbData.push(dataWithID);
         });
+        return fbData;
       })
       .catch(error => {
         return error;
       });
-    return fbData;
   }
 
   //WRITE

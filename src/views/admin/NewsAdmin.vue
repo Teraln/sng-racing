@@ -16,8 +16,8 @@
                 <v-list-item three-line>
                   <v-list-item-content>
                     <div class="overline">{{ `${news.day}.${news.month}.${news.year}` }}</div>
-                    <v-list-item-subtitle class="">{{news.platform}}</v-list-item-subtitle>
-                    <v-list-item-title class="headline mb-1 ml-3">{{ news.title }}</v-list-item-title>
+                    <v-list-item-subtitle>{{news.platform}}</v-list-item-subtitle>
+                    <v-list-item-title class="headline mb-4 ml-3">{{ news.title }}</v-list-item-title>
                   </v-list-item-content>
 
                   <v-list-item-avatar size="120" color="grey">
@@ -64,8 +64,27 @@ export default {
   computed: {},
   methods: {
     getNews() {
-      this.allNews = API.getData("news");
+      API.getData("news").then(data => {
+        this.allNews = data;
+        this.addUnix();
+      });
     },
+    addUnix() {
+      console.log(this.allNews);
+      const newsWithUnix = this.allNews.map(el => {
+        const articleDate = new Date(`${el.year}-${el.month}-${el.day}`);
+        el.unix = articleDate.getTime();
+        return el;
+      });
+
+      this.allNews = newsWithUnix;
+
+      // const sortedArray = unixArray.sort((a, b) => {
+      //   return a - b;
+      // });
+      console.log(newsWithUnix);
+    },
+
     deleteNews(id) {
       if (window.confirm("Do you really want to delete this entry?")) {
         API.deleteEntry("news", id);
