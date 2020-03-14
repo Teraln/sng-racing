@@ -22,7 +22,7 @@
               <!-- Slides -->
               <slide
                 id="home-driver-slide"
-                v-for="(driver, index) in drivers"
+                v-for="(driver, index) in driverData"
                 :key="index"
                 :index="index"
               >
@@ -60,7 +60,6 @@ export default {
 
   data() {
     return {
-      drivers: [],
       grid: true,
       hooperSettings: {
         itemsToShow: 1,
@@ -73,6 +72,11 @@ export default {
         centerMode: true
       }
     };
+  },
+  computed: {
+    driverData() {
+      return this.$store.getters.drivers;
+    }
   },
   methods: {
     gridSwitch() {
@@ -91,7 +95,6 @@ export default {
     }
   },
   mounted() {
-    this.drivers = this.$store.getters.drivers;
     this.gridSwitch();
     window.addEventListener("resize", this.gridSwitch, { passive: true });
   }

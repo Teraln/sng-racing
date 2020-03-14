@@ -4,7 +4,7 @@
     <!-- <TopParallax /> -->
     <v-container>
       <v-row justify="center">
-        <v-col v-for="partner in partners" :key="partner.id" lg="4" md="6" sm="12">
+        <v-col v-for="partner in partnerData" :key="partner.id" lg="4" md="6" sm="12">
           <PartnerCard :partner="partner" />
         </v-col>
       </v-row>
@@ -28,9 +28,10 @@ export default {
       partners: []
     };
   },
-  mounted() {
-    //Get the data from Vuex
-    this.partners = this.$store.getters.partners;
+  computed: {
+    partnerData() {
+      return this.$store.getters.partners;
+    }
   }
 };
 </script>

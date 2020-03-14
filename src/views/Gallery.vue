@@ -25,7 +25,7 @@
 
         <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
           <!-- Slides -->
-          <slide id="gallery-slide" v-for="(item, index) in gallery" :key="index" :index="index">
+          <slide id="gallery-slide" v-for="(item, index) in galleryData" :key="index" :index="index">
             <div id="item-title-container">
               <h5 id="item-title">{{item.title}}</h5>
             </div>
@@ -70,17 +70,21 @@ export default {
   },
   data() {
     return {
-      gallery: [],
       hooperSettings: {
         itemsToShow: 1,
         infiniteScroll: true,
         transition: 300,
         wheelControl: false,
         mouseDrag: true,
-        touchDrag: false,
+        touchDrag: true,
         keysControl: true
       }
     };
+  },
+  computed: {
+    galleryData() {
+      return this.$store.getters.gallery;
+    }
   },
   methods: {
     slideNext() {
@@ -89,7 +93,6 @@ export default {
     slidePrev() {
       this.$refs.carousel.slidePrev();
     },
-    //TODO Maybe something for later
     smoothScroll() {
       const galleryView = document.querySelector("#gallery-hooper");
 
@@ -97,9 +100,6 @@ export default {
         behavior: "smooth"
       });
     }
-  },
-  mounted() {
-    this.gallery = this.$store.getters.gallery;
   }
 };
 </script>

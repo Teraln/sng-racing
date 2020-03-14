@@ -5,7 +5,7 @@
     <PartnerBelt />
     <v-container>
       <v-row id="drivers-row" justify="center">
-        <v-col v-for="driver in drivers" :key="driver.id" lg="4" md="6" sm="12">
+        <v-col v-for="driver in driversArray" :key="driver.id" lg="4" md="6" sm="12">
           <DriverCard :driver="driver" :grid="grid" />
         </v-col>
       </v-row>
@@ -27,15 +27,19 @@ export default {
   components: { Navbar, TopParallax, PartnerBelt, DriverCard, Footer },
   data() {
     return {
-      drivers: [],
       //Determines the layout of the DriverCard component
       //true == horizontal, false == vertical
       grid: false
     };
   },
+  computed: {
+    driversArray() {
+      return this.$store.getters.drivers;
+    }
+  },
   mounted() {
     //Get the data from Vuex
-    this.drivers = this.$store.getters.drivers;
+    // this.drivers = this.$store.getters.drivers;
   }
 };
 </script>
