@@ -98,7 +98,6 @@ export default {
       this.success = true;
     },
     uploadImage(file) {
-      //TODO delet
       this.dialog = false;
       if (file === null) {
         this.setNewNews();

@@ -2,7 +2,6 @@
   <v-container class="DriverCard pb-4">
     <v-row>
       <!-- LEFT SIDE -->
-      <!-- TODO Vertical on drivers page, horizontal on homepage -->
       <v-col
         id="left-side-container"
         :cols="returnCardLayout(grid).cols[0]"
@@ -19,7 +18,6 @@
       </v-col>
 
       <!-- RIGHT SIDE -->
-      <!-- TODO Vertical on drivers page, horizontal on homepage -->
       <v-col
         id="right-side-container"
         :cols="returnCardLayout(grid).cols[1]"
@@ -34,7 +32,6 @@
         <v-col class="py-2 px-4" cols="12">
           <v-row>
             <v-col id="property" class="py-0" cols="3">Age:</v-col>
-            <!-- TODO temp -->
             <v-col id="info" class="py-0" cols="9">{{ getAge(driver) }}</v-col>
           </v-row>
         </v-col>
@@ -51,7 +48,6 @@
           </v-row>
         </v-col>
         <v-col class="py-2 px-4" cols="12">
-          <!-- TODO temp -->
           <v-row>
             <v-col id="property" class="py-0" cols="3">Titles:</v-col>
             <v-col

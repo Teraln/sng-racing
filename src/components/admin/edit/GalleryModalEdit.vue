@@ -74,7 +74,6 @@ export default {
     },
 
     uploadImage(file) {
-      //TODO delet
       this.dialog = false;
 
       if (!file) {

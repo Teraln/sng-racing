@@ -1,5 +1,4 @@
 <template>
-  <!-- TODO fix the centering of image issue -->
   <div class="Gallery">
     <Navbar />
     <TopParallax />

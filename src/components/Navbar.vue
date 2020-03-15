@@ -14,7 +14,6 @@
       </v-toolbar>
     </v-container>
 
-    <!-- TODO add burger menu -->
     <template v-else>
       <MenuDrawer />
     </template>
