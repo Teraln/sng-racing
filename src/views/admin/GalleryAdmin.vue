@@ -6,7 +6,7 @@
           <Loading />
         </div>
         <div v-else>
-          <v-col cols="12" md="10">
+          <v-col cols="12">
             <v-row class="mb-5" justify="space-between">
               <H1>Gallery</H1>
 
