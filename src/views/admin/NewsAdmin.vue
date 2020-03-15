@@ -15,7 +15,7 @@
               <NewsModalNew :getNews="getNews" />
             </v-row>
             <v-row>
-              <v-col v-for="news in allNews" :key="allNews.indexOf(news)" cols="12">
+              <v-col v-for="news in orderedNews" :key="orderedNews.indexOf(news)" cols="12">
                 <v-card class="mx-auto" min-width="280" outlined>
                   <v-list-item three-line>
                     <v-list-item-content>
@@ -62,13 +62,19 @@ export default {
     NewsModalEdit,
     NewsModalNew
   },
-  //TODO Order news by date
   data() {
     return {
       allNews: null
     };
   },
-  computed: {},
+  computed: {
+    orderedNews() {
+      let data = this.allNews;
+      return data.sort((a, b) => {
+        return b.unix - a.unix;
+      });
+    }
+  },
   methods: {
     getNews() {
       API.getData("news").then(data => {
@@ -77,7 +83,6 @@ export default {
       });
     },
     addUnix() {
-      console.log(this.allNews);
       const newsWithUnix = this.allNews.map(el => {
         const articleDate = new Date(`${el.year}-${el.month}-${el.day}`);
         el.unix = articleDate.getTime();
@@ -85,11 +90,6 @@ export default {
       });
 
       this.allNews = newsWithUnix;
-
-      // const sortedArray = unixArray.sort((a, b) => {
-      //   return a - b;
-      // });
-      console.log(newsWithUnix);
     },
 
     deleteNews(id) {
