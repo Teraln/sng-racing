@@ -4,16 +4,18 @@
       <!-- LEFT SIDE -->
       <v-col
         id="left-side-container"
+        class="py-0"
         :cols="returnCardLayout(grid).cols[0]"
         :offset="returnCardLayout(grid).offset[0]"
       >
         <!-- Image -->
-        <v-col id="driver-name-container" cols="8" offset="2">
-          <h1 id="driver-name">{{ `${driver.name} ${driver.lastname}` }}</h1>
-        </v-col>
-        <!-- Name -->
-        <v-col cols="10" offset="1">
-          <v-img contain :src="driver.imageURL" max-height="300" class="my-4"></v-img>
+        <v-col cols="10" offset="1" class="py-0">
+          <v-img id="driver-image" contain :src="driver.imageURL" max-height="300">
+            <!-- Name -->
+            <v-col id="driver-name-container" cols="8" offset="2">
+              <h1 id="driver-name">{{ `${driver.name} ${driver.lastname}` }}</h1>
+            </v-col>
+          </v-img>
         </v-col>
       </v-col>
 
@@ -84,10 +86,10 @@ export default {
         grid = { cols: [5, 4], offset: [1, 0] };
       } else {
         //Vertical
-        grid = { cols: [12, 8], offset: [0, 2] };
+        grid = { cols: [12, 10], offset: [0, 1] };
       }
       return grid;
-    },
+    }
   }
 };
 </script>
@@ -96,25 +98,25 @@ export default {
 .DriverCard {
   // background-color: rgba($color: $grey, $alpha: 0.5);
   & #left-side-container {
+    position: relative;
+
     & #driver-name-container {
       background-color: $primary;
-      transform: skew(15deg, 0deg);
+      // transform: skew(15deg, 0deg);
       z-index: 1;
-      outline: solid 1px $lightGrey;
-      outline-offset: 0.3rem;
+      bottom: 0;
+      position: absolute;
 
       & #driver-name {
         text-align: center;
-        transform: skew(-15deg, -0deg);
+        // transform: skew(-15deg, -0deg);
         font-size: $fHeader;
+        font-weight: 300;
       }
     }
   }
 
   #right-side-container {
-    background-color: $grey;
-    outline: solid 1px $lightGrey;
-    outline-offset: 0.3rem;
     //TODO Remove or add later
     // transform: skew(-3deg, 0deg);
 
@@ -132,5 +134,4 @@ export default {
     }
   }
 }
-
 </style>
