@@ -9,12 +9,14 @@ export default new Vuex.Store({
     drivers: [],
     partners: [],
     gallery: [],
+    news: [],
 
     routes: [
       { title: "Home", route: "/" },
       { title: "Drivers", route: "/drivers" },
       { title: "Partners", route: "/partners" },
-      { title: "Gallery", route: "/gallery" }
+      { title: "Gallery", route: "/gallery" },
+      { title: "News", route: "/news" }
     ]
   },
   mutations: {
@@ -26,6 +28,9 @@ export default new Vuex.Store({
     },
     setGallery: (state, payload) => {
       state.gallery = payload;
+    },
+    setNews: (state, payload) => {
+      state.news = payload;
     }
   },
   actions: {
@@ -43,12 +48,18 @@ export default new Vuex.Store({
       API.getData("gallery").then(data => {
         this.commit("setGallery", data);
       });
-    }
+    },
+    fetchNews() {
+      API.getData("news").then(data => {
+        this.commit("setNews", data);
+      });
+    },
   },
   getters: {
     drivers: state => state.drivers,
     partners: state => state.partners,
     gallery: state => state.gallery,
+    news: state => state.news,
 
     routes: state => state.routes
   }

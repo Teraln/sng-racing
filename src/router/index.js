@@ -5,6 +5,7 @@ import Home from "../views/Home.vue";
 import Drivers from "../views/Drivers.vue";
 import Partners from "../views/Partners.vue";
 import Gallery from "../views/Gallery.vue";
+import News from "../views/News.vue";
 
 import Login from "../views/admin/Login.vue";
 import Admin from "../views/admin/Admin.vue";
@@ -41,6 +42,11 @@ const routes = [
     path: "/gallery",
     name: "gallery",
     component: Gallery
+  },
+  {
+    path: "/news",
+    name: "news",
+    component: News
   },
 
   //ADMIN SECTION
