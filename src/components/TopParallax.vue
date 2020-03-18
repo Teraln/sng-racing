@@ -7,8 +7,6 @@
           <h4 class="subheading">A leading Sim-Racing E-Sports organisation</h4>
         </v-col>
       </v-row>
-
-      <div id="shape-bottom"></div>
     </v-parallax>
   </div>
 </template>
@@ -31,19 +29,11 @@ export default {
       opacity: 0.7 !important;
       bottom: 5rem;
     }
-    & #shape-bottom {
-      position: absolute;
-      bottom: 0;
-      background-color: $secondary;
-      height: 100%;
-      width: 100%;
-      clip-path: polygon(40% 96%, 42% 90%, 100% 100%, 0% 100%);
-    }
-    & #text-container {
-      & .display-1 {
-        font-size: $fHeader;
-        text-shadow: 1px 1px 1px $lightGrey !important;
-      }
+  }
+  & #text-container {
+    & .display-1 {
+      font-size: $fHeader;
+      text-shadow: 1px 1px 1px $lightGrey !important;
     }
   }
 }
