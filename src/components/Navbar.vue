@@ -37,6 +37,9 @@ export default {
 
 <style lang="scss" scoped>
 .Navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
   background-color: $secondary;
   & #toolbar-title {
     font-weight: 300;
