@@ -2,7 +2,7 @@
   <div class="PartnerBelt">
     <v-container>
       <hooper :settings="hooperSettings">
-        <slide v-for="(partner,index) in partners" :key="index" :index="index">
+        <slide v-for="(partner,index) in getPartnerImages" :key="index" :index="index">
           <img :src="partner.imageURL" :alt="partner.name" draggable="false" />
         </slide>
       </hooper>
@@ -39,8 +39,10 @@ export default {
       }
     };
   },
-  mounted() {
-    this.partners = this.$store.getters.partners;
+  computed: {
+    getPartnerImages() {
+      return this.$store.getters.partners;
+    }
   }
 };
 </script>
