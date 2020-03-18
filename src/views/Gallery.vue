@@ -14,17 +14,23 @@
           @click="slideNext(); smoothScroll();"
           text
           icon
+          large
           color="primary"
         >
           <v-icon>mdi-chevron-right</v-icon>
         </v-btn>
-        <v-btn id="control-btn-prev" @click="slidePrev(); smoothScroll()" text icon color="primary">
+        <v-btn id="control-btn-prev" @click="slidePrev(); smoothScroll()" text icon large color="primary">
           <v-icon>mdi-chevron-left</v-icon>
         </v-btn>
 
         <hooper id="gallery-hooper" :settings="hooperSettings" ref="carousel">
           <!-- Slides -->
-          <slide id="gallery-slide" v-for="(item, index) in galleryData" :key="index" :index="index">
+          <slide
+            id="gallery-slide"
+            v-for="(item, index) in galleryData"
+            :key="index"
+            :index="index"
+          >
             <div id="item-title-container">
               <h5 id="item-title">{{item.title}}</h5>
             </div>
@@ -129,14 +135,14 @@ export default {
       position: relative;
       & #control-btn-next {
         position: absolute;
-        top: 1rem;
-        right: 2rem;
+        top: 50%;
+        right: 0;
         z-index: 3;
       }
       & #control-btn-prev {
         position: absolute;
-        top: 1rem;
-        left: 2rem;
+        top: 50%;
+        left: 0;
         z-index: 3;
       }
 
@@ -175,8 +181,11 @@ export default {
             max-height: 90%;
           }
         }
+        & .hooper-progress {
+          background-color: $grey;
         & .hooper-progress-inner {
           background-color: $primary;
+        }
         }
         & .hooper-slide {
           display: inherit;
@@ -188,5 +197,8 @@ export default {
       }
     }
   }
+}
+.hooper-indicators {
+  padding-left: 0;
 }
 </style>
